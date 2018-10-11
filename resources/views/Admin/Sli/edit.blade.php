@@ -10,7 +10,7 @@
     <span>轮播图修改</span> 
    </div> 
    <div class="mws-panel-body no-padding"> 
-    <form class="mws-form" action="/slides/{{$id}}" method="post" enctype="multipart/form-data"ype>
+    <form class="mws-form" action="/slides/{{$data->id}}" method="post" enctype="multipart/form-data"ype>
 
      <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
@@ -22,7 +22,9 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">状态</label> 
        <div class="mws-form-item"> 
-        <input type="radio" name="status" value="1">显示
+        <input type="radio" name="status" value="1"
+	@if $data->status==1@endif
+        >显示
         <input type="radio" name="status" value="2">隐藏
        </div> 
       </div>

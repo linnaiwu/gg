@@ -77,7 +77,10 @@ class SliController extends Controller
      */
     public function edit($id)
     {
-        return view('Admin.Sli.edit');
+        // echo $id;
+        $a=DB::table('admin_slides')->where('id','=',$id)->first();
+        // var_dump($a);die;
+        return view('Admin.Sli.edit',['data'=>$a]);
         
     }
 
@@ -90,7 +93,7 @@ class SliController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $a=DB::table('admin_slides')->find($id)->get();
+        
         dd($a);
     }
 
