@@ -145,6 +145,16 @@
         <li><a href="">商品添加</a></li> 
         <li><a href="">商品列表</a></li> 
        </ul> </li> 
+       <li> <a href=""><i class="icon-file"></i> 轮播图管理</a> 
+       <ul class="closed"> 
+        <li><a href="/slides/create">轮播图添加</a></li> 
+        <li><a href="/slides">轮播图列表</a></li> 
+       </ul> </li> 
+       <li> <a href=""><i class="icon-file"></i> 广告管理</a> 
+       <ul class="closed"> 
+        <li><a href="">广告添加</a></li> 
+        <li><a href="">广告列表</a></li> 
+       </ul> </li> 
      </ul> 
     </div> 
    </div> 
