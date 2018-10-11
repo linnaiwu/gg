@@ -12,21 +12,43 @@
 */
 
 
-// 后台搭建
-Route::resource("/admin","Admin\AdminController");
-// 后台用户模块
-Route::resource("/adminuser","Admin\UsersController");
-// 后台用户Ajax删除
-Route::get("/adminuserdel","Admin\UsersController@del");
-// 会员收货地址
-Route::get("/adminuseraddress/{id}","Admin\UsersController@address");
-//后台无限分类模块
-Route::resource("/admincate","Admin\CateController");
-//后台轮播图
-Route::resource("/slides","Admin\SliController");
+
+// // 后台搭建
+// Route::resource("/admin","Admin\AdminController");
+// // 后台用户模块
+// Route::resource("/adminuser","Admin\UsersController");
+// // 后台用户Ajax删除
+// Route::get("/adminuserdel","Admin\UsersController@del");
+// // 会员收货地址
+// Route::get("/adminuseraddress/{id}","Admin\UsersController@address");
+// //后台无限分类模块
+// Route::resource("/admincate","Admin\CateController");
 
 
 
+
+
+
+// 后台登录退出
+Route::resource("adminlogin","Admin\AdminLoginController");
+
+Route::group(['middleware'=>'adminlogin'],function(){
+	
+		// 后台搭建
+		Route::resource("/admin","Admin\AdminController");
+		// 会员模块
+		Route::resource("/adminuser","Admin\UsersController");
+		// 后台用户Ajax删除
+		Route::get("/adminuserdel","Admin\UsersController@del");
+		// 会员收货地址
+		Route::get("/adminuseraddress/{id}","Admin\UsersController@address");
+		//后台无限分类模块
+		Route::resource("/admincate","Admin\CateController");
+		// 后台管理员模块
+		Route::resource("adminusers","Admin\AdminuserController");
+		//后台轮播图
+		Route::resource("/slides","Admin\SliController");
+});
 
 
 // 前台首页

@@ -44,7 +44,7 @@ class UsersController extends Controller
     {
         // echo "这是添加界面";
         // 加载模版
-        return view("Admin.Users.add");
+        // return view("Admin.Users.add");
     }
 
     /**
@@ -55,23 +55,23 @@ class UsersController extends Controller
      */
     public function store(AdminUserInsert $request)
     {
-        //打印所有数据
-        // dd($request->all());
-        // except 把字段去掉
-        $data = $request->except(['repassword','_token']);
-        // dd($data);
-        // 处理数据 加密密码
-        $data['password']=Hash::make($data['password']);
-        // dd($data);
-        // 封装数据
-        $data['status']=1;
-        $data['token']= str_random(50);
-        if(Userss::create($data)){
-            return redirect('/adminuser')->with("success","数据添加成功");
-        }else{
-            // return back();//阻止跳转
-            return redirect('/adminuser/create')->with("error","添加失败");
-        }
+        // //打印所有数据
+        // // dd($request->all());
+        // // except 把字段去掉
+        // $data = $request->except(['repassword','_token']);
+        // // dd($data);
+        // // 处理数据 加密密码
+        // $data['password']=Hash::make($data['password']);
+        // // dd($data);
+        // // 封装数据
+        // $data['status']=1;
+        // $data['token']= str_random(50);
+        // if(Userss::create($data)){
+        //     return redirect('/adminuser')->with("success","数据添加成功");
+        // }else{
+        //     // return back();//阻止跳转
+        //     return redirect('/adminuser/create')->with("error","添加失败");
+        // }
 
 
     }
@@ -109,12 +109,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
         // echo $id;
         // 获取单条数据
-        $info = Userss::where("id","=",$id)->first();
-        // 加载模版
-        return view("Admin.Users.edit",['info'=>$info]);
+        // $info = Userss::where("id","=",$id)->first();
+        // // 加载模版
+        // return view("Admin.Users.edit",['info'=>$info]);
     }
 
     /**
@@ -129,15 +128,15 @@ class UsersController extends Controller
         // echo $id;
         // 获取修改后的数据
         // dd($request->all());
-        $data=$request->except(['_token','_method','repassword']);
-        if(empty($data['password'])){
-          return redirect("/adminuser/$id/edit")->with('error','密码不能为空');exit;
-        }
-        if(Userss::where("id","=",$id)->update($data)){
-            return redirect("/adminuser")->with('success','修改成功');
-        }else{
-            return redirect('/adminuser/$id/edit')->with('error','修改失败');
-        }
+        // $data=$request->except(['_token','_method','repassword']);
+        // if(empty($data['password'])){
+        //   return redirect("/adminuser/$id/edit")->with('error','密码不能为空');exit;
+        // }
+        // if(Userss::where("id","=",$id)->update($data)){
+        //     return redirect("/adminuser")->with('success','修改成功');
+        // }else{
+        //     return redirect('/adminuser/$id/edit')->with('error','修改失败');
+        // }
     }
 
     /**

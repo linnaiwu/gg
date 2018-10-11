@@ -6,6 +6,7 @@ jQuery(function(){
 		function(){
 			jq(this).find(".fj").addClass("nuw");
 			jq(this).find(".zj").show();
+			jq(this).find(".zj").css('top', $(this).index() * -40 + 'px');
 		}
 		,
 		function(){

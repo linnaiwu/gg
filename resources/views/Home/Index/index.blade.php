@@ -228,8 +228,8 @@
          <span class="fl">{{$row->name}}</span> 
         </div> 
         @if(count($row->dev))
-          @foreach($row->dev as $rows)
         <div class="zj"> 
+          @foreach($row->dev as $rows)
          <div class="zj_l"> 
           <div class="zj_l_c"> 
            <h2>{{$rows->name}}</h2> 
@@ -237,9 +237,11 @@
              <a href="#">{{$rowss->name}}</a>|
             @endforeach
           </div> 
-        </div> 
+         </div> 
          @endforeach
+        </div> 
         @endif
+       </li> 
        @endforeach
       </ul> 
      </div> 
