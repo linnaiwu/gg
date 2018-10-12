@@ -31,9 +31,9 @@ class AdminLoginMiddleware
             // 获取权限列表
             $nodelist = session("nodelist");
             // 对比  控制器是否存在   方法是否存在
-            if(empty($nodelist[$controllerName]) || !in_array($action,$nodelist[$controllerName])){
-                return redirect('/admin')->with('error','抱歉,您没有权限访问该模块,请联系超级管理员');
-            }
+            // if(empty($nodelist[$controllerName]) || !in_array($action,$nodelist[$controllerName])){
+            //     return redirect('/admin')->with('error','抱歉,您没有权限访问该模块,请联系超级管理员');
+            // }
             return $next($request);
         }else{
             return redirect("/adminlogin/create");

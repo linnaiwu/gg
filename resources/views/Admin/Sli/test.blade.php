@@ -1,25 +1,6 @@
-@extends("Admin.AdminPublics.public")
-@section("title",'轮播图列表')
-
-@section('admin')
-<html>
- <head></head>
- <script src="/static/jquery-1.8.3.min.js"></script>
- <body>
-  <div class="mws-panel grid_8"> 
-   <div class="mws-panel-header"> 
-    <span><i class="icon-table"></i> 轮播图列表</span> 
-   </div> 
-   <div class="mws-panel-body no-padding"> 
+<div class="mws-panel-body no-padding"> 
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-
-    <form action="/admincate" method="get">
-     <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>搜索: <input type="text" aria-controls="DataTables_Table_1" name="keywords" value="{{$request['keywords'] or ''}}" /></label>
-      <input type="submit" value="搜索">
-     </div>
-      
-    </form>
+    <div id="uid">
      <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info"> 
       <thead> 
        <tr role="row">
@@ -40,15 +21,12 @@
           <img src="{{$row->pic}}" alt="" style="width:122px;height:100px;">
         </td> 
         <td class=" ">{{$row->status}}</td> 
-        
-       
         <td class=" ">
           <form action="/slides/{{$row->id}}" method="post">
             <button class="btn btn-success">普通删除</button>
             {{method_field('DELETE')}}
             {{csrf_field()}}
           </form>
-     
           <a href="/slides/{{$row->id}}/edit" class="btn btn-info"><i class="icon-wrench"></i></a>
         </td> 
        </tr>
@@ -57,14 +35,6 @@
      </table>
     
      <div class="dataTables_paginate paging_full_numbers" id="pages">
-    
+      </div>
      </div>
     </div> 
-   </div> 
-  </div>
- </body>
- <script type="text/javascript">
-  
- </script>
-</html>
-@endsection

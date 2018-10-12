@@ -10,7 +10,7 @@
     <span>权限添加</span> 
    </div> 
    <div class="mws-panel-body no-padding"> 
-    <form class="mws-form" action="/adminusers" method="post">
+    <form class="mws-form" action="/nodelist" method="post">
  
      <div class="mws-form-inline"> 
       <div class="mws-form-row"> 

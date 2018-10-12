@@ -25,7 +25,7 @@ class NoticeController extends Controller
     public function create()
     {
         //加载模板
-        return view("Admin.Nocite.add");
+        return view("Admin.Notice.add");
     }
 
     /**

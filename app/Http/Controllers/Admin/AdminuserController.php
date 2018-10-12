@@ -24,6 +24,20 @@ class AdminuserController extends Controller
         // 加载模版
         return view("Admin.Adminuser.index",['adminuser'=>$adminuser]);
     }
+    // 批量删除
+    public function del(Request $request){
+        // 获取当前数组参数
+        $a = $request->input('a');
+        if($a==''){
+            echo "请最少选中一条数据";exit;
+        }
+        // echo json_encode($a);
+        // 遍历删除
+        foreach($a as $key=>$v){
+            DB::table("admin_users")->where("id",'=',$v)->delete();
+        }
+        echo 1;
+    }
 
     // 分配角色
     public function rolelist($id){

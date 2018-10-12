@@ -129,6 +129,7 @@
        <ul class="closed"> 
         <!-- <li><a href="/adminuser/create">会员添加</a></li>  -->
         <li><a href="/adminuser">会员列表</a></li> 
+        <li><a href="/adminuserss">会员Ajax分页</a></li> 
        </ul> </li> 
       <li> <a href="#"><i class="icon-user"></i> 管理员管理</a> 
        <ul class="closed"> 

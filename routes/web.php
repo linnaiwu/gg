@@ -48,6 +48,10 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::post("/saveauth","Admin\RolelistController@saveauth");
 		// 权限管理
 		Route::resource("/nodelist","Admin\NodelistController");
+		// 会员Ajax分页
+		Route::resource("/adminuserss","Admin\UserController");
+		// Ajax 批量删除数据
+		Route::get("/dels","Admin\AdminuserController@del");
 
 });
 
