@@ -134,6 +134,10 @@
        <ul class="closed"> 
         <li><a href="/adminusers/create">管理员添加</a></li> 
         <li><a href="/adminusers">管理员列表</a></li> 
+        <li><a href="/rolelist">角色添加</a></li> 
+        <li><a href="/rolelist">角色列表</a></li> 
+        <li><a href="/nodelist/create">权限添加</a></li> 
+        <li><a href="/nodelist">权限列表</a></li> 
        </ul> </li> 
       <li> <a href="#"><i class="icon-th-list"></i> 分类管理</a> 
        <ul class="closed"> 

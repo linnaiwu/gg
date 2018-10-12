@@ -37,6 +37,7 @@
         <td class=" ">{{$row->name}}</td> 
         <td class=" ">{{$row->password}}</td> 
         <td class=" ">
+        <a href="/adminrole/{{$row->id}}" class="btn btn-success">分配角色</a>
           <form action="/adminusers/{{$row->id}}" method="post">
             <button class="btn btn-success">删除</button>
             {{method_field('DELETE')}}
