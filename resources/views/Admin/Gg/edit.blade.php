@@ -1,5 +1,5 @@
 @extends("Admin.AdminPublics.public")
-@section("title",'轮播图修改')
+@section("title",'广告修改')
 
 @section('admin')
 <html>
@@ -7,11 +7,17 @@
  <body>
   <div class="mws-panel grid_8"> 
    <div class="mws-panel-header"> 
-    <span>轮播图修改</span> 
+    <span>广告修改</span> 
    </div> 
    <div class="mws-panel-body no-padding"> 
-    <form class="mws-form" action="/slides/{{$data->id}}" method="post" enctype="multipart/form-data"ype>
-	
+    <form class="mws-form" action="/gg/{{$data->id}}" method="post" enctype="multipart/form-data"ype>
+	<div class="mws-form-inline"> 
+      <div class="mws-form-row"> 
+       <label class="mws-form-label">广告名字:</label> 
+       <div class="mws-form-item"> 
+        <input type="text" class="large" name="name" value="{{$data->name}}" /> 
+       </div> 
+      </div> 
      <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">图片上传:</label> 

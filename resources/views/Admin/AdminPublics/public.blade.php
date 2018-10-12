@@ -157,9 +157,14 @@
        </ul> </li> 
        <li> <a href=""><i class="icon-file"></i> 广告管理</a> 
        <ul class="closed"> 
-        <li><a href="">广告添加</a></li> 
-        <li><a href="">广告列表</a></li> 
-       </ul> </li> 
+        <li><a href="/gg/create">广告添加</a></li> 
+        <li><a href="/gg">广告列表</a></li> 
+       </ul> </li>
+       <li> <a href=""><i class="icon-file"></i> 公告管理</a> 
+       <ul class="closed"> 
+        <li><a href="/notice/create">公告添加</a></li> 
+        <li><a href="/notice">公告列表</a></li> 
+       </ul> </li>  
      </ul> 
     </div> 
    </div> 

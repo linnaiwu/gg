@@ -23,6 +23,16 @@
   <script type="text/javascript" src="/static/homes/js/hban.js"></script> 
   <script type="text/javascript" src="/static/homes/js/tban.js"></script> 
   <script type="text/javascript" src="/static/homes/js/lrscroll_1.js"></script> 
+  <style>
+    .gg{
+      width:1200px;
+      height:100px;
+    }
+    .gg img{
+      width:1200px;
+      height:100px;
+    }
+  </style>
   <title>前台首页</title> 
  </head> 
  <body> 
@@ -210,6 +220,12 @@
     </div> 
    </div> 
   </div> 
+
+  
+<div style="background-color:blue;display:none" class="gg">
+  <img src="/static/homes/images/l_img.jpg" alt="">
+  </div>
+  
   <!--End Header End--> 
   <!--Begin Menu Begin--> 
   <div class="menu_bg"> 
@@ -262,9 +278,9 @@
     <div class="banner"> 
      <div class="top_slide_wrap"> 
       <ul class="slide_box bxslider"> 
-       <li><img src="/static/homes/images/ban1.jpg" width="740" height="401" /></li> 
-       <li><img src="/static/homes/images/ban1.jpg" width="740" height="401" /></li> 
-       <li><img src="/static/homes/images/ban1.jpg" width="740" height="401" /></li> 
+      @foreach($data as $v)
+       <li><img src="{{$v->pic}}" width="740" height="401" /></li> 
+       @endforeach
       </ul> 
       <div class="op_btns clearfix"> 
        <a href="#" class="op_btn op_prev"><span></span></a> 
@@ -1395,10 +1411,40 @@
      <img src="/static/homes/images/b_6.gif" width="98" height="33" /> 
     </div> 
    </div> 
-   <!--End Footer End --> 
+   <!--End Footer End -->
+   <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+  <script src="/static/guanggao/js/King_Chance_Layer.js"></script>
+  <link href="/static/guanggao/css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
+  <!-- 代码部分begin -->
+  <div class="King_Chance_Layer">
+      <div class="King_Chance_LayerCont" style="display:none;">
+          <div class="King_Chance_Layer_Close">Close</div>
+            <div class="King_Chance_Layer_Title">SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城</div>
+            <div class="King_Chance_Layer_Btn">
+              <ul>
+                @foreach($a as $v)
+                  <li><a href="#">{{$v->name}}</a></li>
+                  @endforeach
+                </ul>
+            </div>
+            <div class="King_Chance_Layer_Content">
+              <ul>
+              @foreach($a as $v)
+                  <li><a href="" target="_blank"><img src="{{$v->pic}}" /></a></li>
+                  @endforeach
+  
+                </ul>
+
+            </div>
+        </div>
+    </div>
+<script src="/static/guanggao/js/lanrenzhijia.js"></script>
+<!-- 代码部分end -->
   </div>  
   <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->  
+
+
  </body>
 </html>

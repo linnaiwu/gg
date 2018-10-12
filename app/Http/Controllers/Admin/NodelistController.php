@@ -1,42 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-// 导入DB
 use DB;
-class IndexController extends Controller
+class NodelistController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 无限分类递归遍历
-    public function getCatesBypid($pid){
-        // 获取数据
-        $res = DB::table("cates")->where('pid','=',$pid)->get();
-        $data = [];
-        // 遍历数据
-        foreach($res as $key=>$value){
-            // 获取父类下的子类信息
-            $value->dev=self::getCatesBypid($value->id);
-            $data[] = $value;
-        }
-        return $data;
-    }
     public function index()
     {
-        $cate = self::getCatesBypid(0);
-        $data = DB::table('Admin_slides')->select()->get();
-        $a = DB::table('Admin_gg')->select()->get();
-        // var_dump($data);
-        // dd($cate);
-        // 获取无限分类的数据
+        //获取权限信息
+        $nodelist=DB::table("node")->get();
         // 加载模版
-        return view("Home.Index.index",['cate'=>$cate,'data'=>$data,'a'=>$a]);
+        return view("Admin.Nodelist.index",['nodelist'=>$nodelist]);
     }
 
     /**
@@ -46,7 +28,8 @@ class IndexController extends Controller
      */
     public function create()
     {
-        //
+        //加载添加模版
+        return view("Admin.Nodelist.add");
     }
 
     /**
@@ -104,6 +87,4 @@ class IndexController extends Controller
     {
         //
     }
-
-   
 }

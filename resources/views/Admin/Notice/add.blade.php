@@ -1,5 +1,5 @@
 @extends("Admin.AdminPublics.public")
-@section("title",'轮播图修改')
+@section("title",'公告添加')
 
 @section('admin')
 <html>
@@ -7,38 +7,27 @@
  <body>
   <div class="mws-panel grid_8"> 
    <div class="mws-panel-header"> 
-    <span>轮播图修改</span> 
+    <span轮播图添加</span> 
    </div> 
    <div class="mws-panel-body no-padding"> 
-    <form class="mws-form" action="/slides/{{$data->id}}" method="post" enctype="multipart/form-data"ype>
-	
+    <form class="mws-form" action="/notice" method="post" enctype="multipart/form-data">
+   
      <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
-       <label class="mws-form-label">图片上传:</label> 
+       <label class="mws-form-label">公告标题:</label> 
        <div class="mws-form-item"> 
-        <input type="file" class="large" name="pic" value="" /> 
+        <input type="text" class="large" name="title" /> 
        </div> 
       </div> 
       <div class="mws-form-row"> 
-       <label class="mws-form-label">状态</label> 
+       <label class="mws-form-label">公告说明:</label> 
        <div class="mws-form-item"> 
-        <input type="radio" name="status" value="1"
-	@if ($data->status==1) 
-	checked
-	@endif
-        >显示
-        <input type="radio" name="status" value="2" 
-       @if ($data->status==2) 
-	checked
-	@endif
-	 >隐藏
+          <textarea cols="" rows="" name=""></textarea>
        </div> 
       </div>
-   
       
      </div> 
      <div class="mws-button-row">
-      {{method_field('PUT')}}
       {{csrf_field()}}
       <input type="submit" value="Submit" class="btn btn-danger" /> 
       <input type="reset" value="Reset" class="btn " /> 
