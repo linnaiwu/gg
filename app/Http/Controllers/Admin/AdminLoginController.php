@@ -19,6 +19,7 @@ class AdminLoginController extends Controller
         //执行退出
         // 销毁session
         $request->session()->pull('name');
+        // $request->session()->pull('nodelist');
         // 跳转
         return redirect("/adminlogin/create");
     }

@@ -25,6 +25,58 @@ class AdminuserController extends Controller
         return view("Admin.Adminuser.index",['adminuser'=>$adminuser]);
     }
 
+    // 分配角色
+    public function rolelist($id){
+        // 获取后台管理员id
+        // echo $id;
+        // 获取管理员信息 通过id获取
+        $info= DB::table("admin_users")->where("id",'=',$id)->first();
+        // 获取角色信息
+        $role = DB::table("role")->get();
+        // 获取当前管理员已有的角色信息
+        $data = DB::table("user_role")->where("uid",'=',$id)->get();
+        // var_dump($data);
+        // 判断
+        if(count($data)){
+            // 遍历角色已有的信息 勾选
+            foreach($data as $v){
+                $rids[]=$v->rid;
+            }
+            // 加载分配角色的模版
+         return view("Admin.Adminuser.rolelist",['info'=>$info,'role'=>$role,'rids'=>$rids]);
+        }else{
+            // 否就 array()  空值 没有勾选
+            // 加载分配角色的模版 
+         return view("Admin.Adminuser.rolelist",['info'=>$info,'role'=>$role,'rids'=>array()]);
+        }
+    }
+    // 保存角色
+    public function saverole(Request $request){
+        // echo "保存角色"; 向user_role(用户角色表) 数据表插入数据 uid 用户id和rid 角色id
+        // 获取uid
+        $uid=$request->input('uid');
+        // 获取分配的角色信息
+        if(!empty($_POST['rids'])){
+           $rids = $_POST['rids'];
+        }
+        // echo $uid; //管理员的id
+        // var_dump($rids); //角色表的id
+        // 删除当前用户已有的角色
+        if(empty($_POST['rids'])){
+            // return back()->with('error','请选择管理员级别');
+            return redirect("/adminusers")->with("error","未分配角色");
+        }
+        DB::table("user_role")->where("uid",'=',$uid)->delete();
+        // 遍历
+        foreach($rids as $key=>$value){
+            $data['rid']=$value;
+            $data['uid']=$uid;
+            // 存入库
+            DB::table("user_role")->insert($data);
+        }
+        return redirect("/adminusers")->with("success","角色分配成功");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -28,6 +28,18 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::resource("/admincate","Admin\CateController");
 		// 后台管理员模块
 		Route::resource("adminusers","Admin\AdminuserController");
+		// 分配角色
+		Route::get("/adminrole/{id}","Admin\AdminuserController@rolelist");
+		// 保存角色
+		Route::post("/saverole","Admin\AdminuserController@saverole");
+		// 角色管理
+		Route::resource("/rolelist","Admin\RolelistController");
+		// 分配权限
+		Route::get("/auth/{id}","Admin\RolelistController@auth");
+		// 权限保存
+		Route::post("/saveauth","Admin\RolelistController@saveauth");
+		// 权限管理
+		Route::resource("/nodelist","Admin\NodelistController");
 });
 
 // 前台首页
