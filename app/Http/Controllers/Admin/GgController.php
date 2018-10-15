@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 //导入DB
 use DB;
+use Config;
 
 class GgController extends Controller
 {
@@ -45,9 +46,9 @@ class GgController extends Controller
         if($request->hasFile('pic')){ 
             $name=time()+rand(1,10000);
             $res=$request->file('pic')->getClientOriginalExtension();
-            $path=$request->file('pic')->move('./uploads/',$name.'.'.$res);
+            $path=$request->file('pic')->move(Config::get('app.app_upload'),$name.'.'.$res);
             // dd($a);
-            $a['pic']=substr($path,1);
+            $a['pic']=trim(Config::get('app.app_upload')."/".$name.".".$res,'.');
             if (DB::table('admin_gg')->insert($a)) {
                  return redirect("/gg")->with("success","添加成功");
             }else{
@@ -90,27 +91,25 @@ class GgController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $upad=$request->except(['_token','_method']);
-        // dd($upad);
+        $info=DB::table("admin_gg")->where('id','=',$id)->first();
+        $data=$request->except(['_token','_method']);
         if($request->hasFile('pic')){
         //初始化文件名字
         $name=time()+rand(1,10000);
         // 获取上传文件后缀
         $ext=$request->file('pic')->getClientOriginalExtension();
         // 2.将上传的文件移动到指定目录下并且赋值到path
-        $path=$request->file('pic')->move('./uploads/',$name.'.'.$ext);
+        $path=$request->file('pic')->move(Config::get('app.app_upload'),$name.".".$ext);
+        // 封装$data
+        $data['pic']=trim(Config::get('app.app_upload')."/".$name.".".$ext,'.');
         // 3.把赋值后的path图片地址上传至数据库
-        $upad['pic']=substr($path,1);
-        if(DB::table('admin_gg')->where("id",'=',$id)->update($upad)){
+        if(DB::table('admin_gg')->where("id",'=',$id)->update($data)){
+            unlink(".".$info->pic);
             return redirect("/gg")->with("success","修改成功");
+            }
         }else{
-            return redirect("/gg/{{$id}}/edit")->with("success","修改失败");
-        }
-        }else{
-            if(DB::table('admin_gg')->where("id",'=',$id)->update($upad)){
-                return redirect("/gg")->with("success","修改成功");
-            }else{
-                return redirect("/gg/{{$id}}/edit")->with("success","修改失败");
+            if(DB::table('admin_gg')->where("id",'=',$id)->update($data)){
+            return redirect("/gg")->with("success","修改成功");
         }
         }
     }
@@ -123,9 +122,9 @@ class GgController extends Controller
      */
     public function destroy($id)
     {
-        $aa=DB::table('admin_gg')->select()->where('id','=',$id)->get();
+        $aa=DB::table('admin_gg')->where('id','=',$id)->first();
         if (DB::table('admin_gg')->where('id','=',$id)->delete()) {
-                
+                unlink(".".$aa->pic);
                  return redirect("/gg")->with("success","删除成功");
             }else{
                  return redirect("/gg")->with("error","删除失败");

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use Config;
 class SliController extends Controller
 {
     /**
@@ -45,9 +45,8 @@ class SliController extends Controller
         if($request->hasFile('pic')){ 
             $name=time()+rand(1,10000);
             $res=$request->file('pic')->getClientOriginalExtension();
-            $path=$request->file('pic')->move('./uploads/',$name.'.'.$res);
-            // dd($a);
-            $a['pic']=substr($path,1);
+            $path=$request->file('pic')->move(Config::get('app.app_uploads'),$name.'.'.$res);
+            $a['pic']=trim(Config::get('app.app_uploads')."/".$name.".".$res,'.');
             if (DB::table('admin_slides')->insert($a)) {
                  return redirect("/slides")->with("success","添加成功");
             }else{
@@ -93,26 +92,25 @@ class SliController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $upad=$request->except(['_token','_method']);
+        $info=DB::table("admin_slides")->where('id','=',$id)->first();
+        $data=$request->except(['_token','_method']);
         if($request->hasFile('pic')){
         //初始化文件名字
         $name=time()+rand(1,10000);
         // 获取上传文件后缀
         $ext=$request->file('pic')->getClientOriginalExtension();
         // 2.将上传的文件移动到指定目录下并且赋值到path
-        $path=$request->file('pic')->move('./uploads/',$name.'.'.$ext);
+        $path=$request->file('pic')->move(Config::get('app.app_uploads'),$name.".".$ext);
+        // 封装$data
+        $data['pic']=trim(Config::get('app.app_uploads')."/".$name.".".$ext,'.');
         // 3.把赋值后的path图片地址上传至数据库
-        $upad['pic']=substr($path,1);
-        if(DB::table('admin_slides')->where("id",'=',$id)->update($upad)){
+        if(DB::table('admin_slides')->where("id",'=',$id)->update($data)){
+            unlink(".".$info->pic);
             return redirect("/slides")->with("success","修改成功");
+            }
         }else{
-            return redirect("/slides/{{$id}}/edit")->with("success","修改失败");
-        }
-        }else{
-            if(DB::table('admin_slides')->where("id",'=',$id)->update($upad)){
-                return redirect("/slides")->with("success","修改成功");
-            }else{
-                return redirect("/slides/{{$id}}/edit")->with("success","修改失败");
+            if(DB::table('admin_slides')->where("id",'=',$id)->update($data)){
+            return redirect("/slides")->with("success","修改成功");
         }
         }
     }
@@ -125,12 +123,12 @@ class SliController extends Controller
      */
     public function destroy($id)
     {
-        $aa=DB::table('admin_slides')->select()->where('id','=',$id)->get();
+        $aa=DB::table('admin_slides')->where('id','=',$id)->first();
         // var_dump($aa[0]->pic);die;
         
         // echo $pic;die;
         if (DB::table('admin_slides')->where('id','=',$id)->delete()) {
-                
+                unlink(".".$aa->pic);
                  return redirect("/slides")->with("success","删除成功");
             }else{
                  return redirect("/slides")->with("error","删除失败");

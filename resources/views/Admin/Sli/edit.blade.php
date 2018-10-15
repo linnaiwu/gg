@@ -11,10 +11,16 @@
    </div> 
    <div class="mws-panel-body no-padding"> 
     <form class="mws-form" action="/slides/{{$data->id}}" method="post" enctype="multipart/form-data"ype>
-	
+	<div class="mws-form-inline"> 
+      <div class="mws-form-row"> 
+       <label class="mws-form-label">旧图片:</label> 
+       <div class="mws-form-item"> 
+       <img src="{{$data->pic}}" alt="">
+       </div> 
+      </div> 
      <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
-       <label class="mws-form-label">图片上传:</label> 
+       <label class="mws-form-label">新图片:</label> 
        <div class="mws-form-item"> 
         <input type="file" class="large" name="pic" value="" /> 
        </div> 

@@ -229,5 +229,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'app_uploads'=>'./uploads/'.date("Y-m-d"),
+    'app_upload'=>'./uploads/gg'.date("Y-m-d"),
 ];

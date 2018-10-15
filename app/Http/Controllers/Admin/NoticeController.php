@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class NoticeController extends Controller
 {
@@ -15,6 +16,8 @@ class NoticeController extends Controller
     public function index()
     {
         //
+        $data=DB::table('admin_notice')->select()->get();
+        return view('Admin.Notice.index',['data'=>$data]);
     }
 
     /**
@@ -36,7 +39,12 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $data=$request->except("_token");
+        if(DB::table('admin_notice')->insert($data)){
+            return redirect("/notice")->with("success",'添加成功');
+        }else{
+            return redirect("/notice")->with("success",'添加失败');
+        }
     }
 
     /**
@@ -58,7 +66,9 @@ class NoticeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=DB::table('admin_notice')->where('id','=',$id)->first();
+        // dd($data);
+        return view('Admin.Notice.edit',['data'=>$data]);
     }
 
     /**
@@ -70,7 +80,14 @@ class NoticeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $info=$request->only('title','descr');
+        // dd($info);
+        if(DB::table('admin_notice')->where('id','=',$id)->update($info)){
+            return redirect("/notice")->with('success','修改成功');
+        }else{
+            return redirect("/notice")->with('success','修改失败');
+        }
     }
 
     /**
@@ -81,6 +98,10 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-        //
+         if(DB::table("admin_notice")->where('id','=',$id)->delete()){
+            return redirect("/notice")->with('success','删除成功');
+        }else{
+            return redirect("/notice")->with('error','删除失败');
+        }
     }
 }
