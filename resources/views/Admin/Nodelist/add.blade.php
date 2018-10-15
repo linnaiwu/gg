@@ -16,7 +16,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">权限名</label> 
        <div class="mws-form-item"> 
-        <input type="text" class="large" name="name" /> 
+        <input type="text" class="large" name="name"  /> 
        </div> 
       </div> 
       <div class="mws-form-row"> 

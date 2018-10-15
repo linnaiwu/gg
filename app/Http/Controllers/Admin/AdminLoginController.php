@@ -53,7 +53,7 @@ class AdminLoginController extends Controller
         // var_dump($info);exit;
         if($info){
             // echo "OK";
-        // 检测密码
+            // 检测密码
             if(Hash::check($password,$info->password)){
                 // echo "Ok";
                 // 将用户的信息存储在session里

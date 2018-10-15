@@ -38,8 +38,8 @@
         <td class=" ">{{$row->mname}}</td> 
         <td class=" ">{{$row->aname}}</td> 
         <td class=" ">
-        <a href="/auth/{{$row->id}}" class="btn btn-warning">修改</a>
-          <form action="/adminuser/{{$row->id}}" method="post">
+        <a href="/nodelist/{{$row->id}}" class="btn btn-warning">修改</a>
+          <form action="/nodelist/{{$row->id}}" method="post">
             <button class="btn btn-success">普通删除</button>
             {{method_field('DELETE')}}
             {{csrf_field()}}

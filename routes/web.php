@@ -28,8 +28,9 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::get("/adminuseraddress/{id}","Admin\UsersController@address");
 		//后台无限分类模块
 		Route::resource("/admincate","Admin\CateController");
+		
 		// 后台管理员模块
-		Route::resource("adminusers","Admin\AdminuserController");
+		Route::resource("/adminusers","Admin\AdminuserController");
 		//后台轮播图
 		Route::resource("/slides","Admin\SliController");
 		//后台广告
@@ -46,7 +47,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::get("/auth/{id}","Admin\RolelistController@auth");
 		// 权限保存
 		Route::post("/saveauth","Admin\RolelistController@saveauth");
-		// 权限管理
+		// 权限管理添加
 		Route::resource("/nodelist","Admin\NodelistController");
 		// 会员Ajax分页
 		Route::resource("/adminuserss","Admin\UserController");

@@ -48,6 +48,7 @@ class RolelistController extends Controller
         $rid=$request->input("rid");
         // 获取nids
         $nids=$_POST['nids'];
+        // var_dump($nids);die;
         // 删除当前角色已有的权限
         DB::table("role_node")->where("rid",'=',$rid)->delete();
         // 遍历
@@ -55,6 +56,7 @@ class RolelistController extends Controller
             // 存入数据库
             $data['rid']=$rid;
             $data['nid']=$value;
+
             // 插入
             DB::table("role_node")->insert($data);
         }

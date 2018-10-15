@@ -53,8 +53,8 @@
           </form>
           <!-- Ajax -->
         <!--   <a href="javascript:viod(0)" class="btn btn-info del">Ajax删除</a> -->
-        <a href="/adminuser/{{$row->id}}" class="btn btn-info">会员详情</a>
-        <a href="/adminuseraddress/{{$row->id}}" class="btn btn-info">会员收货地址</a>
+      <!--   <a href="/adminuser/{{$row->id}}" class="btn btn-info">会员详情</a>
+        <a href="/adminuseraddress/{{$row->id}}" class="btn btn-info">会员收货地址</a> -->
           <a href="/adminuser/{{$row->id}}/edit" class="btn btn-info"><i class="icon-wrench"></i></a>
         </td> 
        </tr>

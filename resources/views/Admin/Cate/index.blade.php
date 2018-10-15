@@ -28,6 +28,7 @@
        
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 122px;">pid</th>
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 122px;">path</th>
+         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 122px;">状态</th>
         
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 90px;">操作</th>
        </tr> 
@@ -35,20 +36,22 @@
       <tbody role="alert" aria-live="polite" aria-relevant="all">
       @foreach($cate as $row)
        <tr class="odd"> 
-        <td class="  sorting_1">{{$row->id}}</td> 
-        <td class=" ">{{$row->name}}</td> 
-        <td class=" ">{{$row->pid}}</td> 
-        <td class=" ">{{$row->path}}</td> 
+        <th class="  sorting_1">{{$row->id}}</th> 
+        <th class=" ">{{$row->name}}</th> 
+        <th class=" ">{{$row->pid}}</th> 
+        <th class=" ">{{$row->path}}</th> 
+        <th class=" ">@if($row->status == 1) 显示 @endif
+        @if($row->status == 0) 隐藏 @endif</th> 
        
-        <td class=" ">
+        <th class=" ">
           <form action="/admincate/{{$row->id}}" method="post">
             <button class="btn btn-success">普通删除</button>
             {{method_field('DELETE')}}
             {{csrf_field()}}
           </form>
      
-          <a href="" class="btn btn-info"><i class="icon-wrench"></i></a>
-        </td> 
+          <a href="/admincate/{{$row->id}}" class="btn btn-info">&nbsp;&nbsp;<i class="icon-wrench"></i>&nbsp;&nbsp;</a>
+        </th> 
        </tr>
        @endforeach
       </tbody>

@@ -65,6 +65,11 @@ class CateController extends Controller
     {
         //执行分类添加
         // dd($request->all());
+        // 判断分类名字是否为空
+        if(empty($request['name'])){
+            return back()->with("error",'请输入分类名字');
+        }
+        // 删除_token字断
         $data = $request->except(["_token"]);
         // 区分$pid
         // 获取pid
@@ -101,6 +106,9 @@ class CateController extends Controller
     public function show($id)
     {
         //
+         // echo $id;
+         $row=DB::table("cates")->where("id",'=',$id)->first();
+         return view("Admin.Cate.edit",['row'=>$row]);
     }
 
     /**
@@ -111,7 +119,6 @@ class CateController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -123,7 +130,15 @@ class CateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // echo "OJK";
+        // dd($request->all());
+        $data = $request->except(["_token","_method"]);
+        // dd($data);
+        if(DB::table("cates")->where("id",'=',$id)->update($data)){
+            return redirect("/admincate")->with("success",'分类修改成功');
+        }else{
+            return redirect("/admincate")->with("error",'分类修改失败');
+        }
     }
 
     /**

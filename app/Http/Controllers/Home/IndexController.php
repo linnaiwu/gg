@@ -15,7 +15,7 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     // 无限分类递归遍历
-    public function getCatesBypid($pid){
+    public function getCatesByPid($pid){
         // 获取数据
         $res = DB::table("cates")->where('pid','=',$pid)->get();
         $data = [];
@@ -29,8 +29,11 @@ class IndexController extends Controller
     }
     public function index()
     {
-        $cate = self::getCatesBypid(0);
+        // 获取分类数据
+        $cate = self::getCatesByPid(0);
+        // 获取广告数据
         $data = DB::table('Admin_slides')->select()->get();
+        // 公告数据
         $a = DB::table('Admin_gg')->select()->get();
         // var_dump($data);
         // dd($cate);

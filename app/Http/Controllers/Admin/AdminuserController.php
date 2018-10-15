@@ -78,7 +78,7 @@ class AdminuserController extends Controller
         // 删除当前用户已有的角色
         if(empty($_POST['rids'])){
             // return back()->with('error','请选择管理员级别');
-            return redirect("/adminusers")->with("error","未分配角色");
+            return redirect("/adminusers")->with("error","未分配角色,请分配角色");
         }
         DB::table("user_role")->where("uid",'=',$uid)->delete();
         // 遍历
@@ -112,16 +112,29 @@ class AdminuserController extends Controller
     {
         //获取所有的参数
         // dd($request->all());
-        $data = $request->except('_token');
-        // 用哈希类将 密码加密
-        $data['password']=Hash::make($data['password']);
-        // dd($data);
-        // 存入数据库
-        if(DB::table("admin_users")->insert($data)){
-            return redirect("/adminusers")->with('success','添加成功');
+        // 判断用户名
+        if(empty($request['name'])){
+            return back()->with("error",'请输入管理员名字或密码');
         }else{
-            return redirect("/adminusers/create")->with('error','添加失败');
+             // 管理员密码
+            if(empty($request['password'])){
+                return back()->with("error",'密码不能为空,请输入密码');
+            }else{
+                   // dd($request->all());
+                $data = $request->except('_token');
+                // 用哈希类将 密码加密
+                $data['password']=Hash::make($data['password']);
+                // dd($data);
+                // 存入数据库
+                if(DB::table("admin_users")->insert($data)){
+                    return redirect("/adminusers")->with('success','添加成功');
+                }else{
+                    return redirect("/adminusers/create")->with('error','添加失败');
+                }
+            }
+            
         }
+       
     }
 
     /**

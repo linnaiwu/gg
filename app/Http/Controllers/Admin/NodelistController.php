@@ -40,8 +40,19 @@ class NodelistController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+         if(empty($request['name'])){
+            return back()->with("error",'权限名字不能为空');
+        }
+        if(empty($request['mname'])){
+            return back()->with("error",'控制器不可以为空');
+        }
+        if(empty($request['aname'])){
+            return back()->with("error",'方法不能为空');
+        }
+        
         //权限添加
-        // echo "OK";
+        // echo "OK";die;
         $data=$request->except("_token");
         $data['status']='0';
         // dd($data);
@@ -57,9 +68,12 @@ class NodelistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 修改
     public function show($id)
     {
-        //
+        // echo "修改";
+         $row=DB::table("node")->where("id",'=',$id)->first();
+        return view("Admin.Nodelist.edit",['row'=>$row]);
     }
 
     /**
@@ -82,7 +96,16 @@ class NodelistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //修改后
+        // echo "OK";
+        // dd($request->all());
+         $data = $request->except(["_token","_method"]);
+        // dd($data);
+        if(DB::table("node")->where("id",'=',$id)->update($data)){
+            return redirect("/nodelist")->with("success",'权限修改成功');
+        }else{
+            return redirect("/nodelist")->with("error",'权限修改失败');
+        }
     }
 
     /**
@@ -91,8 +114,15 @@ class NodelistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // 删除
     public function destroy($id)
     {
-        //
+        // echo "Ok";
+         // 直接删除
+        if(DB::table("node")->where('id','=',$id)->delete()){
+            return redirect("/nodelist")->with('success','删除成功');
+        }else{
+            return redirect("/nodelist")->with('error','删除失败');
+        }
     }
 }

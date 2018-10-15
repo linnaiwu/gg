@@ -65,6 +65,7 @@
      </table>
     
      <div class="dataTables_paginate paging_full_numbers" id="pages">
+     {{$adminuser->render()}}
      </div>
     </div> 
    </div> 

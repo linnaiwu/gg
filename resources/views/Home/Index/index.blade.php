@@ -244,18 +244,18 @@
          <span class="fl">{{$row->name}}</span> 
         </div> 
         @if(count($row->dev))
-        <div class="zj"> 
-          @foreach($row->dev as $rows)
+        <ul class="zj"> 
          <div class="zj_l"> 
+          @foreach($row->dev as $ss)
           <div class="zj_l_c"> 
-           <h2>{{$rows->name}}</h2> 
-            @foreach($rows->dev as $rowss)
-             <a href="#">{{$rowss->name}}</a>|
+           <h2>{{$ss->name}}</h2>
+            @foreach($ss->dev as $aaa)
+             <a href="#">{{$aaa->name}}</a>|
             @endforeach
-          </div> 
+          </div>
+          @endforeach
          </div> 
-         @endforeach
-        </div> 
+        </ul> 
         @endif
        </li> 
        @endforeach
