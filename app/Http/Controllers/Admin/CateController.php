@@ -14,6 +14,24 @@ class CateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // 调整类别顺序
+    public static function getcates(){
+            $cate = DB::table("cates")->select(DB::raw('*,concat(path,",",id) as paths'))->orderBy("paths")->get();
+            // 加分隔符
+            // 先遍历数据
+            foreach($cate as $key=>$value){
+                // echo $value->path."<br>";
+                // 转换为数组
+                $arr=explode(",",$value->path);
+                // echo "<pre>";
+                // var_dump($arr);
+                // 获取逗号个数
+                $len=count($arr)-1;
+                // 给当前分类添加分隔符
+               $cate[$key]->name = str_repeat("--| ",$len).$value->name;
+        }
+        return $cate;
+    }
     public function index(Request $request)
     {
         //

@@ -28,7 +28,6 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::get("/adminuseraddress/{id}","Admin\UsersController@address");
 		//后台无限分类模块
 		Route::resource("/admincate","Admin\CateController");
-		
 		// 后台管理员模块
 		Route::resource("/adminusers","Admin\AdminuserController");
 		//后台轮播图
@@ -53,6 +52,8 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::resource("/adminuserss","Admin\UserController");
 		// Ajax 批量删除数据
 		Route::get("/dels","Admin\AdminuserController@del");
+		// 商品管理
+		Route::resource("/adminshop","Admin\ShopController");
 
 });
 

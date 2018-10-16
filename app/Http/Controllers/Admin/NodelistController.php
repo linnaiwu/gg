@@ -102,7 +102,7 @@ class NodelistController extends Controller
          $data = $request->except(["_token","_method"]);
         // dd($data);
         if(DB::table("node")->where("id",'=',$id)->update($data)){
-            return redirect("/nodelist")->with("success",'权限修改成功'); 
+            return redirect("/nodelist")->with("success",'权限修改成功');
         }else{
             return redirect("/nodelist")->with("error",'权限修改失败');
         }

@@ -30,6 +30,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">公告说明:</label> 
        <div class="mws-form-item"> 
+       
           <script id="editor" type="text/plain" name="descr" style="width:800px;height:500px;">
           </script>
        </div> 
