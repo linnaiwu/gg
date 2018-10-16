@@ -59,8 +59,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 
 
 // 前台首页
-Route::resource("/homeindex","Home\IndexController");
-
+Route::resource("/home","Home\HomeController");
 
 
 

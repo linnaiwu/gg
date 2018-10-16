@@ -4,18 +4,15 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-// 导入DB
 use DB;
-class IndexController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // 无限分类递归遍历
-    public function getCatesByPid($pid){
+      public function getCatesByPid($pid){
         // 获取数据
         $res = DB::table("cates")->where('pid','=',$pid)->get();
         $data = [];
@@ -39,7 +36,7 @@ class IndexController extends Controller
         // dd($cate);
         // 获取无限分类的数据
         // 加载模版
-        return view("Home.Index.index",['cate'=>$cate,'data'=>$data,'a'=>$a]);
+        return view("Home.Home.index",['cate'=>$cate,'data'=>$data,'a'=>$a]);
     }
 
     /**
@@ -107,6 +104,4 @@ class IndexController extends Controller
     {
         //
     }
-
-   
 }
