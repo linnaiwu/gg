@@ -145,15 +145,11 @@
         <li><a href="/admincate/create">分类添加</a></li> 
         <li><a href="/admincate">分类列表</a></li> 
        </ul> </li> 
-      <li> <a href="#"><i class="icon-file"></i> 文章管理</a> 
+     
+      <li> <a href="#"><i class="icon-th-list"></i> 商品管理</a> 
        <ul class="closed"> 
-        <li><a href="">文章添加</a></li> 
-        <li><a href="">文章列表</a></li> 
-       </ul> </li> 
-      <li> <a href="#"><i class="icon-file"></i> 商品管理</a> 
-       <ul class="closed"> 
-        <li><a href="">商品添加</a></li> 
-        <li><a href="">商品列表</a></li> 
+        <li><a href="/adminshop/create">商品添加</a></li> 
+        <li><a href="/adminshop">商品列表</a></li> 
        </ul> </li> 
        <li> <a href=""><i class="icon-file"></i> 轮播图管理</a> 
        <ul class="closed"> 
