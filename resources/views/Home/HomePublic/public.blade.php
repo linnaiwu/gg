@@ -9,6 +9,25 @@
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]--> 
+    <script type="text/javascript" src="/static/homes/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="/static/homes/js/menu.js"></script>    
+            
+  <script type="text/javascript" src="/static/homes/js/lrscroll_1.js"></script>   
+     
+    
+  <script type="text/javascript" src="/static/homes/js/n_nav.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/static/homes/css/ShopShow.css" />
+    <link rel="stylesheet" type="text/css" href="/static/homes/css/MagicZoom.css" />
+    <script type="text/javascript" src="/static/homes/js/MagicZoom.js"></script>
+    
+    <script type="text/javascript" src="/static/homes/js/num.js">
+      var jq = jQuery.noConflict();
+    </script>
+        
+    <script type="text/javascript" src="/static/homes/js/p_tab.js"></script>
+    
+    <script type="text/javascript" src="/static/homes/js/shade.js"></script>
   <script type="text/javascript" src="/static/homes/js/jquery-1.11.1.min_044d0927.js"></script> 
   <script type="text/javascript" src="/static/homes/js/jquery.bxslider_e88acd1b.js"></script> 
   <script type="text/javascript" src="/static/homes/js/jquery-1.8.2.min.js"></script> 
@@ -211,10 +230,55 @@
    </div> 
   </div> 
   <!--End Header End--> 
-  <!--Begin Menu Begin--> 
- 
-  <!--End Menu End--> 
+  <!--Begin Menu Begin-->
+
+  <div class="menu_bg"> 
+   <div class="menu"> 
+    <!--Begin 商品分类详情 Begin--> 
+    <div class="nav"> 
+     <div class="nav_t">
+      全部商品分类
+     </div> 
+     <div class="leftNav none" > 
+      <ul> 
+      @foreach($cate as $row)
+       <li> 
+        <div class="fj"> 
+         <span class="n_img"><span></span><img src="/static/homes/images/nav1.png" /></span> 
+         <span class="fl">{{$row->name}}</span> 
+        </div> 
+        @if(count($row->dev))
+        <ul class="zj"> 
+         <div class="zj_l"> 
+          @foreach($row->dev as $ss)
+          <div class="zj_l_c"> 
+           <h2>{{$ss->name}}</h2>
+            @foreach($ss->dev as $aaa)
+             <a href="#">{{$aaa->name}}</a>|
+            @endforeach
+          </div>
+          @endforeach
+         </div> 
+        </ul> 
+        @endif
+       </li> 
+       @endforeach
+      </ul> 
+     </div> 
+    </div> 
+    <!--End 商品分类详情 End--> 
+    <ul class="menu_r"> 
+    @foreach($cate as $row)
+     <li><a href="">{{$row->name}}</a></li> 
+    @endforeach
+    </ul> 
+   
+   </div> 
+  </div> 
+
+  <!-- 中间 -->
  @section("home")
+
  @show
    <!--Begin Footer Begin --> 
    <div class="b_btm_bg b_btm_c"> 
@@ -356,7 +420,7 @@
    </div> 
    <!--End Footer End --> 
    <!-- 广告 -->
-   <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+   <script src=""></script>
   <script src="/static/guanggao/js/King_Chance_Layer.js"></script>
   <link href="/static/guanggao/css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
   <!-- 代码部分begin -->
