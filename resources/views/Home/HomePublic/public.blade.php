@@ -121,7 +121,7 @@
        </div> 
       </div> </span> </span> 
     <!--End 所在收货地区 End--> 
-    <span class="fr"> <span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
+    <span class="fr"> <span class="fl">你好，请<a href="/homelogin">登录</a>&nbsp; <a href="/register/create" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
       <div class="ss_list"> 
        <a href="#">收藏夹</a> 
        <div class="ss_list_bg"> 
@@ -181,7 +181,7 @@
      <!--Begin 购物车未登录 Begin--> 
      <div class="un_login">
       还未登录！
-      <a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！
+      <a href="/homelogin" style="color:#ff4e00;">马上登录</a> 查看购物车！
      </div> 
      <!--End 购物车未登录 End--> 
      <!--Begin 购物车已登录 Begin--> 

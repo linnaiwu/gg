@@ -65,20 +65,22 @@ Route::resource("/home","Home\HomeController");
 Route::resource("/shop","Home\ShopController");
 Route::get("/shopsm/{id}","Home\ShopController@sm");
 
-
-
-
-// // 调用自定义函数
-// Route::get("/func","Admin\UsersController@func");
-
-// // 调用自定义的三方类方法
-// Route::get("/cc","Admin\UsersController@cc");
-
-// // laravel调用云之讯短信接口
-// Route::get("/message","Admin\UsersController@message");
-
-// // 支付宝接口调用
-// Route::resource("/pays","Home\PayController");
-
-// // 通知界面
-// Route::get("/returnurl","Home\PayController@returnurl");
+	//前台注册
+	Route::resource("register","Home\RegisterController");
+	//前台登录
+	Route::resource("homelogin","Home\HomeloginController");
+	//找回密码
+	Route::get("forget","Home\HomeloginController@forget");
+	//邮箱找回
+	Route::get("emailget","Home\HomeloginController@emailget");
+	Route::post("doemailget","Home\HomeloginController@doemailget");
+	Route::get("reset","Home\HomeloginController@reset");
+	Route::post("doreset","Home\HomeloginController@doreset");
+	//测试邮件发送
+	Route::get("/send","Home\RegisterController@send");
+	//测试邮件发送2
+	//Route::get("/send1","Home\RegisterController@sendMail");
+	//验证码
+	Route::get("/code","Home\RegisterController@code");
+	//激活
+	Route::get("/jihuo","Home\RegisterController@jihuo");
