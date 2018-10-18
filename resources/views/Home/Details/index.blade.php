@@ -13,18 +13,20 @@
      <div id="tsImgS">
      <!-- 大图 -->
    
-      <a href="/static/homes/images/p_big.jpg" title="Images" class="MagicZoom" id="MagicZoom"><img src="{{$row->pic}}" width="390" height="390" /></a>
+      <a href="{{$row->pic}}" title="Images" class="MagicZoom" id="MagicZoom"><img src="{{$row->pic}}" width="390" height="390" /></a>
      </div> 
      <div id="tsPicContainer"> 
       <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div> 
       <div id="tsImgSCon"> 
+      <!-- 大图下方图 -->
        <ul> 
-        <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img src="{{$row->pic}}" tsimgs="/static/homes/images/ps1.jpg" width="79" height="79" /></li> 
+        <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img src="{{$row->pic}}" tsimgs="{{$row->pic}}" width="79" height="79" />
+        </li> 
        </ul> 
       </div> 
       <div id="tsImgSArrR" onclick="tsScrollArrRight()"></div> 
      </div> 
-     <img class="MagicZoomLoading" width="16" height="16" src="/static/homes/images/loading.gif" alt="Loading..." /> 
+     <img class="MagicZoomLoading" width="16" height="16" src="" alt="Loading..." /> 
     </div> 
     <div class="pro_des"> 
      <div class="des_name"> 

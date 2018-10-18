@@ -29,13 +29,15 @@
                 <span class="fr"><a href="#">清空</a></span>
             </div>
             <ul>
+                    @foreach($data as $row)     
                 <li>
-                    <div class="img"><a href="#"><img src="/static/homes/images/his_5.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="{{$row->pic}}" width="185" height="162" /></a></div>
                     <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
                         <font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
+                @endforeach
             </ul>
         </div>
         <div class="l_list">

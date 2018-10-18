@@ -79,11 +79,11 @@ class ShopController extends Controller
          $cate = HomeController::getCatesByPid(0);
         // 加载模版
 
-        $goods=DB::table("cates")->where("pid",'=',$id)->get();
-        $data ='';  
-        foreach($goods as $k=>$v){
-           $data=  DB::table("pro_goods")->where('cate_id','=',$v->id)->get();
-        }
+        // $goods=DB::table("cates")->where("pid",'=',$id)->get();
+        // $data ='';  
+        // foreach($goods as $k=>$v){
+           $data=  DB::table("pro_goods")->where('cate_id','=',$id)->get();
+        // }
 
         // dd($data);
         return view("Home.Shop.add",['cate'=>$cate,'data'=>$data]);

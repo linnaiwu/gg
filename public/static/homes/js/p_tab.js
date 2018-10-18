@@ -25,7 +25,6 @@ jQuery(function(){
 	jQuery(window).scroll(function(){
 		var jqthis = jq(this);
 		var targetTop = jq(this).scrollTop();
-		var footerTop = jq("#footer").offset().top;
 		var height = jq(window).height();
 		
 		if (targetTop >= 520){

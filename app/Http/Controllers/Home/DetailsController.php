@@ -49,7 +49,7 @@ class DetailsController extends Controller
         // dd($id);
         $cate = HomeController::getCatesByPid(0);
         // 加载模版
-        $dataa[] = DB::table("pro_goods")->select()->first(); 
+        $dataa[] = DB::table("pro_goods")->where('id','=',$id)->first(); 
         // dd($dataa);
         return view("Home.Details.index",['cate'=>$cate,'dataa'=>$dataa]);
     }

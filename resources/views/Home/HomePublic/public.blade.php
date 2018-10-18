@@ -252,9 +252,9 @@
          <div class="zj_l"> 
           @foreach($row->dev as $ss)
           <div class="zj_l_c"> 
-           <h2>{{$ss->name}}</h2>
+           <h2><a href="/shop/{{$ss->id}}">{{$ss->name}}</a></h2>
             @foreach($ss->dev as $aaa)
-             <a href="#">{{$aaa->name}}</a>|
+             <a href="/shop/{{$aaa->id}}">{{$aaa->name}}</a>|
             @endforeach
           </div>
           @endforeach
@@ -269,7 +269,7 @@
     <!--End 商品分类详情 End--> 
     <ul class="menu_r"> 
     @foreach($cate as $row)
-     <li><a href="/shopsm/{{$row->id}}">{{$row->name}}</a></li> 
+     <li><a href="/shop">{{$row->name}}</a></li> 
     @endforeach
     </ul> 
    

@@ -28,15 +28,7 @@
                 <span class="fl">浏览历史</span>
                 <span class="fr"><a href="#">清空</a></span>
             </div>
-            <ul>
-                <li>
-                    <div class="img"><a href="#"><img src="/static/homes/images/his_5.jpg" width="185" height="162" /></a></div>
-                    <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                        <font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-            </ul>
+            
         </div>
         <div class="l_list">
             <div class="list_t">
@@ -51,7 +43,7 @@
                 <ul class="cate_list">
                                     @foreach($goods as $row)
                     <li >
-                        <div class="img"><a href="#"><img src="{{$row->pic}}" width="210" height="185" /></a></div>
+                        <div class="img"><a href="/details"><img src="{{$row->pic}}" width="210" height="185" /></a></div>
                         <div class="price">
                             <font>￥<span>{{$row->price}}</span></font> &nbsp; 
                         </div>

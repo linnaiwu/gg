@@ -601,7 +601,7 @@
    </div> 
    <!--End Footer End --> 
     <!-- 广告 -->
-   <script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+   <script src=""></script>
   <script src="/static/guanggao/js/King_Chance_Layer.js"></script>
   <link href="/static/guanggao/css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
   <!-- 代码部分begin -->
