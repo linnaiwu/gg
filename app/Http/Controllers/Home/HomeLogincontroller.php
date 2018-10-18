@@ -183,4 +183,11 @@ class HomeLogincontroller extends Controller
         }
     }
 
+    //短信发送
+    public function phone(){
+       sendsphone('18818846242');
+       
+       return view("home.phone.phone");
+    }
+
 }
