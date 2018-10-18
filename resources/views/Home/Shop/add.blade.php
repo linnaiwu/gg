@@ -11,7 +11,7 @@
             <td width="70">&nbsp; 类别：</td>
             <td class="td_a">
              @foreach($cate as $row)
-                        @foreach($row->dev as $rrr)
+                @foreach($row->dev as $rrr)
                     <a href="/shop/{{$rrr->id}}">{{$rrr->name}}</a>
                 @endforeach
            @endforeach
@@ -49,9 +49,10 @@
             <div class="list_c uid">
                 
                 <ul class="cate_list">
-                                    @foreach($goods as $row)
-                    <li >
-                        <div class="img"><a href="#"><img src="{{$row->pic}}" width="210" height="185" /></a></div>
+                    @if(!empty($data))
+                    @foreach($data as $row)     
+                    <li>
+                        <div class="img"><a href="/details/{{$row->id}}"><img src="{{$row->pic}}" width="210" height="185" /></a></div>
                         <div class="price">
                             <font>￥<span>{{$row->price}}</span></font> &nbsp; 
                         </div>
@@ -62,6 +63,7 @@
                         </div>
                     </li>
                     @endforeach
+                    @endif
                 </ul>
           
             </div>

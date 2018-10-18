@@ -63,7 +63,9 @@ Route::resource("/home","Home\HomeController");
 
 // 前台商品
 Route::resource("/shop","Home\ShopController");
-Route::get("/shopsm/{id}","Home\ShopController@sm");
+// 商品详情
+Route::resource("/details","Home\DetailsController");
+
 //友情链接
 Route::resource("/link","Home\LinkController");
 

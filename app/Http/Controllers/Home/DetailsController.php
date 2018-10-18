@@ -5,46 +5,16 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class HomeController extends Controller
+class DetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-      public static function getCatesByPid($pid){
-        // 获取数据
-        $res = DB::table("cates")->where('pid','=',$pid)->get();
-        $data = [];
-        // 遍历数据
-        foreach($res as $key=>$value){
-            // 获取父类下的子类信息
-            $value->dev=self::getCatesBypid($value->id);
-            $data[] = $value;
-        }
-        return $data;
-    }
-    public function index(Request $request)
+    public function index()
     {
-        // 获取分类数据
-        $cate = self::getCatesByPid(0);
-        // 判断是否为Ajax请求
-        if(!$request->ajax()){
-               // 获取广告数据
-                $data = DB::table('Admin_slides')->select()->get();
-                // 公告数据
-                $a = DB::table('Admin_gg')->select()->get();
-                // var_dump($data);
-                // dd($cate);
-                $gg = DB::table("admin_notice")->select()->get();
-                // 获取商品数据
-                $goods = DB::table("pro_goods")->select()->get();
-                // 加载模版
-                return view("Home.Home.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
-        }
-        // 获取附加的参数 id
-        $id = $request->input('id');
-            echo $id;
+        
     }
 
     /**
@@ -76,7 +46,12 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        // dd($id);
+        $cate = HomeController::getCatesByPid(0);
+        // 加载模版
+        $dataa[] = DB::table("pro_goods")->select()->first(); 
+        // dd($dataa);
+        return view("Home.Details.index",['cate'=>$cate,'dataa'=>$dataa]);
     }
 
     /**
