@@ -1,6 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<style>
+#sss{
+  position: relative;
+  top:100px;
+
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="/static/homes/css/style.css" />
     <!--[if IE 6]>
@@ -38,6 +45,15 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
+       <center>
+          @if(session('sss'))
+           <span  id="sss" style="color:#F88607;font-size:26px;">{{session('sss')}}</span>
+          @endif 
+          @if(session('errsend'))
+           <span style="color:black;font-size:15px;">{{session('errsend')}}</span>
+          @endif  
+        </center>
+
         <div class="logo"><a href="Index.html"><img src="/static/homes/images/logo.png" /></a></div>
     </div>
 	<div class="login">
@@ -47,7 +63,13 @@
           {{csrf_field()}}
             <table border="0" style="width:370px; font-size:14px; margin-top:30px;" cellspacing="0" cellpadding="0">
               <tr height="50" valign="top">
-              	<td width="55">&nbsp;</td>
+              <center>
+              @if(session('error'))
+             <span style="color:red;font-size:17px;">{{session('error')}}</span>
+              @endif
+              </center>
+              	<td width="55">&nbsp;
+                  </td>
               <tr height="50" valign="top">
               	<td width="55">&nbsp;</td>
                 <td>

@@ -1,6 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<style>
+.sy{
+  color:#FF4E4F;
+  text-decoration: underline
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="/static/homes/css/style.css" />
     <!--[if IE 6]>
@@ -38,6 +44,7 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
+   <a href="/home" style="color:black;font-size:20px;" class="sy">返回首页</a>
         <div class="logo"><a href="Index.html"><img src="/static/homes/images/logo.png" /></a></div>
     </div>
 	<div class="login">
@@ -45,7 +52,7 @@
 		<div class="log_c">
   <center>
       <span style="color:red;font-size:17px"> {{session('error')}}</span>
-      <span style="color:#E9C340;font-size:20px"> {{session('reset')}}</span>
+      <span style="color:#D72323;font-size:20px"> {{session('reset')}}</span>
   </center>
         	<form action="/homelogin" method="post">
           {{csrf_field()}}
@@ -53,7 +60,7 @@
               <tr height="50" valign="top">
               	<td width="55">&nbsp;</td>
                 <td>
-                	<span class="fl"><a href="/home" style="color:red">返回首页</a></span>
+                	<span class="fl" style="font-size:24px;">登录</span>
                     <span class="fr">还没有商城账号，<a href="/register/create" style="color:#ff4e00;">立即注册</a></span>
                 </td>
               </tr>

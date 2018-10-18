@@ -141,12 +141,19 @@ class HomeLogincontroller extends Controller
       // dd($data);
       //获取数据库的数据
       $info=DB::table("users")->where("email",'=',$email)->first();
-    //发送邮箱找回密码
-     $res=$this->sendMail($info->id,$info->token,$email);
+      if(count($info)>0){
+           //发送邮箱找回密码
+        $res=$this->sendMail($info->id,$info->token,$email);
      if($res){
-        echo "重置密码的邮箱已发送成功,请登录邮箱重置密码";
-     }
+    return redirect("/emailget")->with('sss',"发送请求成功,请前往邮箱进行下一步");
+        }else{
+     return redirect("/emailget")->with('errsend',"发送请求失败,请检查网络是否稳定"); 
+        }
+      }else{
+        // echo "不存在此邮箱";
+        return redirect("/emailget")->with('error',"不存在此邮箱,请认真填写");
 
+      }
     }
     //重置密码
     public function reset(Request $request){

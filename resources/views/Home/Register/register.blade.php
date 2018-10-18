@@ -36,10 +36,14 @@
 <!--Begin Header Begin-->
 <div class="soubg">
 	<div class="sou">
+  <center>
+
+         @if(session('zhuc'))
+            <h2 style="color:#FF4646"> {{session('zhuc')}}</h2>
+        @endif 
+  </center>
         <span class="fr">
-            <span class="fl">|&nbsp;关注我们：</span>
-            <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
-            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="/static/homes/images/s_tel.png" align="absmiddle" /></a></span>
+            <span class="fl"><a href="/home">首页</span>
         </span>
     </div>
 </div>
@@ -57,6 +61,7 @@
           {{csrf_field()}}
             <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
               <tr height="50" valign="top">
+
               	<td width="95">&nbsp;</td>
                 <td>
                 	<span class="fl" style="font-size:24px;">注册</span>
@@ -114,18 +119,17 @@
               </tr>
             <tr height="50">
               <td align="right"><font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
-                <td>
+          <td style="color:red">
+         @if(session('yanz'))
+             {{session('yanz')}}
+        @endif 
                     <input type="text" name="vcode" value="" class="l_ipt" />
 
                 </td>
               </tr>
               <tr>
-        @if(session('yanz'))
-          <td style="color:red">
-             {{session('yanz')}}
-          </td>
-        @endif 
-              <tr>
+
+              </tr>
               <tr>
               	<td>&nbsp;</td>
                 <td style="font-size:12px; padding-top:20px;">
@@ -160,19 +164,18 @@
      var  btn = document.getElementById('zzz');
      var  input = document.getElementById('input');
          btn.style.background="#8297FD";
+          btn.disabled = true;
   function test(){
-    if(!input.checked==false){
+    if(input.checked==true){
        btn.disabled = false;
+       input.checked==false;
       btn.style.background="#F9530A";
       }else{
        btn.style.background="#8297FD";
-      input.checked==false;
        btn.disabled = true;
-       alert('请勾选->我已阅读并接受《用户协议》');
+      alert('请勾选->我已阅读并接受《用户协议》');
     };
 };
-
-
 
 </script>
 </html>

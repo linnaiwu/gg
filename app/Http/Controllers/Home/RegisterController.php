@@ -133,11 +133,12 @@ class RegisterController extends Controller
                 //发送邮件激活用户 $id 插入数据id   $token 插入数据的token $mail 接收方
                 $res=$this->sendMail($id,$data['token'],$data['email']);
                 if($res){
-                    echo "激活用户邮件已经发送,请登录邮箱激活用户";
+                    
+            return redirect("/register/create")->with('zhuc','注册成功,请登录邮箱激活');
                 }
             }   
         }else{
-            return back()->with('error','输入的验证码有误');
+            return back()->with('yanz',':&nbsp;&nbsp;输入有误');
         }
     }
 
