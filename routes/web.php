@@ -64,18 +64,20 @@ Route::resource("/home","Home\HomeController");
 // 前台商品
 Route::resource("/shop","Home\ShopController");
 Route::get("/shopsm/{id}","Home\ShopController@sm");
+//友情链接
+Route::resource("/link","Home\LinkController");
 
 	//前台注册
-	Route::resource("register","Home\RegisterController");
+	Route::resource("/register","Home\RegisterController");
 	//前台登录
-	Route::resource("homelogin","Home\HomeloginController");
+	Route::resource("/homelogin","Home\HomeloginController");
 	//找回密码
-	Route::get("forget","Home\HomeloginController@forget");
+	Route::get("/forget","Home\HomeloginController@forget");
 	//邮箱找回
-	Route::get("emailget","Home\HomeloginController@emailget");
-	Route::post("doemailget","Home\HomeloginController@doemailget");
-	Route::get("reset","Home\HomeloginController@reset");
-	Route::post("doreset","Home\HomeloginController@doreset");
+	Route::get("/emailget","Home\HomeloginController@emailget");
+	Route::post("/doemailget","Home\HomeloginController@doemailget");
+	Route::get("/reset","Home\HomeloginController@reset");
+	Route::post("/doreset","Home\HomeloginController@doreset");
 	//测试邮件发送
 	Route::get("/send","Home\RegisterController@send");
 	//测试邮件发送2

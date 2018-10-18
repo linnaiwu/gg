@@ -121,7 +121,7 @@
        </div> 
       </div> </span> </span> 
     <!--End 所在收货地区 End--> 
-    <span class="fr"> <span class="fl">你好，请<a href="/homelogin">登录</a>&nbsp; <a href="/register/create" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
+     <span class="fr"> <span class="fl">你好，请<a href="/homelogin">登录</a>&nbsp; <a href="/register/create" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss">  
       <div class="ss_list"> 
        <a href="#">收藏夹</a> 
        <div class="ss_list_bg"> 
@@ -181,7 +181,7 @@
      <!--Begin 购物车未登录 Begin--> 
      <div class="un_login">
       还未登录！
-      <a href="/homelogin" style="color:#ff4e00;">马上登录</a> 查看购物车！
+      <a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！
      </div> 
      <!--End 购物车未登录 End--> 
      <!--Begin 购物车已登录 Begin--> 
@@ -408,7 +408,7 @@
    </div> 
    <div class="btmbg"> 
     <div class="btm">
-      <p class="mod_copyright_links" clstag="h|keycount|btm|btmnavi_null03"><a href="" target="_blank">友情链接</a><span class="mod_copyright_split"></span></p>
+      <p class="mod_copyright_links" clstag="h|keycount|btm|btmnavi_null03"><a href="/link" target="_blank">友情链接</a><span class="mod_copyright_split"></span></p>
       备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com Copyright &copy; 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group 
      <br /> 
      <img src="/static/homes/images/b_1.gif" width="98" height="33" />
@@ -420,35 +420,7 @@
     </div> 
    </div> 
    <!--End Footer End --> 
-   <!-- 广告 -->
-   <script src=""></script>
-  <script src="/static/guanggao/js/King_Chance_Layer.js"></script>
-  <link href="/static/guanggao/css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
-  <!-- 代码部分begin -->
-  <div class="King_Chance_Layer">
-      <div class="King_Chance_LayerCont" style="display:none;">
-          <div class="King_Chance_Layer_Close">Close</div>
-            <div class="King_Chance_Layer_Title">SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城</div>
-            <div class="King_Chance_Layer_Btn">
-              <ul>
-                @foreach($a as $v)
-                  <li><a href="#">{{$v->name}}</a></li>
-                  @endforeach
-                </ul>
-            </div>
-            <div class="King_Chance_Layer_Content">
-              <ul>
-              @foreach($a as $v)
-                  <li><a href="" target="_blank"><img src="{{$v->pic}}" /></a></li>
-                  @endforeach
-  
-                </ul>
-
-            </div>
-        </div>
-    </div>
-<script src="/static/guanggao/js/lanrenzhijia.js"></script>
-  </div>  
+   
   <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->  

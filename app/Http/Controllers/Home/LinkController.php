@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class ShopController extends Controller
+//表单验证
+use App\Http\Requests\Homelinkinsert;
+
+
+class LinkController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public static function getCatesByPid($pid){
+    public static function getCatesByPid($pid){
         // 获取数据
         $res = DB::table("cates")->where('pid','=',$pid)->get();
         $data = [];
@@ -24,27 +28,12 @@ class ShopController extends Controller
         }
         return $data;
     }
-    public function index(Request $request)
+    public function index()
     {
-        // 获取分类数据
         $cate = self::getCatesByPid(0);
-        // 判断是否为Ajax请求
-        if(!$request->ajax()){
-               // 获取广告数据
-                $data = DB::table('Admin_slides')->select()->get();
-                // 公告数据
-                $a = DB::table('Admin_gg')->select()->get();
-                // var_dump($data);
-                // dd($cate);
-                $gg = DB::table("admin_notice")->select()->get();
-                // 获取商品数据
-                $goods = DB::table("pro_goods")->select()->get();
-                // 加载模版
-                return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
-        }
-        // 获取附加的参数 id
-        $id = $request->input('id');
-            echo $id;
+        $data=DB::table('link')->where('display','=',1)->get();
+
+        return view('Home.Link.index',['cate'=>$cate,'data'=>$data]);
     }
 
     /**
@@ -54,8 +43,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        echo "OK";
-        // $ss = DB::table("pro_goods")->('catea','peo_goods.cate_id','=','cates.id')->select('')->get();
+        //
     }
 
     /**
@@ -64,9 +52,15 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Homelinkinsert $request)
     {
-        //
+        $data=$request->except(['_token']);
+        // dd($data);
+        if(DB::table('link')->insert($data)){
+            return redirect("/link")->with("success","添加成功,待审核");
+        }else{
+            return redirect("/link")->with("success","添加失败,请认真填写");
+        }
     }
 
     /**
@@ -112,9 +106,5 @@ class ShopController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function sm($id){
-       // dd($id);
-      
     }
 }
