@@ -269,7 +269,7 @@
     <!--End 商品分类详情 End--> 
     <ul class="menu_r"> 
     @foreach($cate as $row)
-     <li><a href="">{{$row->name}}</a></li> 
+     <li><a href="/shopsm/{{$row->id}}">{{$row->name}}</a></li> 
     @endforeach
     </ul> 
    
@@ -408,6 +408,7 @@
    </div> 
    <div class="btmbg"> 
     <div class="btm">
+      <p class="mod_copyright_links" clstag="h|keycount|btm|btmnavi_null03"><a href="" target="_blank">友情链接</a><span class="mod_copyright_split"></span></p>
       备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com Copyright &copy; 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group 
      <br /> 
      <img src="/static/homes/images/b_1.gif" width="98" height="33" />

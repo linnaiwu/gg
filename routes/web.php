@@ -61,7 +61,9 @@ Route::group(['middleware'=>'adminlogin'],function(){
 // 前台首页
 Route::resource("/home","Home\HomeController");
 
-
+// 前台商品
+Route::resource("/shop","Home\ShopController");
+Route::get("/shopsm/{id}","Home\ShopController@sm");
 
 
 

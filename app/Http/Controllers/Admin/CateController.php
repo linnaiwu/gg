@@ -175,6 +175,7 @@ class CateController extends Controller
             return redirect("/admincate")->with("error",'请先删除子类');
         }
         // 直接删除
+        
         if(DB::table("cates")->where('id','=',$id)->delete()){
             return redirect("/admincate")->with('success','删除成功');
         }else{

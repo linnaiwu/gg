@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class HomeController extends Controller
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-      public function getCatesByPid($pid){
+     public function getCatesByPid($pid){
         // 获取数据
         $res = DB::table("cates")->where('pid','=',$pid)->get();
         $data = [];
@@ -30,21 +30,21 @@ class HomeController extends Controller
         $cate = self::getCatesByPid(0);
         // 判断是否为Ajax请求
         if(!$request->ajax()){
-        	   // 获取广告数据
-		        $data = DB::table('Admin_slides')->select()->get();
-		        // 公告数据
-		        $a = DB::table('Admin_gg')->select()->get();
-		        // var_dump($data);
-		        // dd($cate);
-		        $gg = DB::table("admin_notice")->select()->get();
-		        // 获取商品数据
-		        $goods = DB::table("pro_goods")->select()->get();
-		        // 加载模版
-		        return view("Home.Home.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
+               // 获取广告数据
+                $data = DB::table('Admin_slides')->select()->get();
+                // 公告数据
+                $a = DB::table('Admin_gg')->select()->get();
+                // var_dump($data);
+                // dd($cate);
+                $gg = DB::table("admin_notice")->select()->get();
+                // 获取商品数据
+                $goods = DB::table("pro_goods")->select()->get();
+                // 加载模版
+                return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
         }
         // 获取附加的参数 id
         $id = $request->input('id');
-     		echo $id;
+            echo $id;
     }
 
     /**
@@ -54,7 +54,8 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        echo "OK";
+        // $ss = DB::table("pro_goods")->('catea','peo_goods.cate_id','=','cates.id')->select('')->get();
     }
 
     /**
@@ -111,5 +112,9 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function sm($id){
+       // dd($id);
+      
     }
 }
