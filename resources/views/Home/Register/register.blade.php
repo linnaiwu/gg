@@ -134,13 +134,13 @@
               	<td>&nbsp;</td>
                 <td style="font-size:12px; padding-top:20px;">
                 	<span style="font-family:'宋体';" class="fl">
-                    	<label class="r_rad"><input type="checkbox" id="input" onclick="test()"/></label><label class="r_txt">我已阅读并接受《用户协议》</label>
+                    	<label class="r_rad"><input type="checkbox" id="aaa" onclick="inp()"/></label><label class="r_txt">我已阅读并接受《用户协议》</label>
                     </span>
                 </td>
               </tr>
               <tr height="60">
               	<td>&nbsp;</td>
-                <td><input type="submit" id="zzz" value="立即注册" class="log_btn" /></td>
+                <td><input type="submit" id="zzz" value="立即注册" class="log_btn"  onclick="test()"/ /></td>
               </tr>
             </table>
             </form>
@@ -159,20 +159,43 @@
 
 </body>
 <script>
-//找对象
-    //1. 获取button 对象
-     var  btn = document.getElementById('zzz');
-     var  input = document.getElementById('input');
-         btn.style.background="#8297FD";
-          btn.disabled = true;
-  function test(){
-    if(input.checked==true){
-       btn.disabled = false;
-       input.checked==false;
-      btn.style.background="#F9530A";
+// //找对象
+//     //1. 获取button 对象
+//      var  btn = document.getElementById('zzz');
+//      var  input = document.getElementById('input');
+//          btn.style.background="#8297FD";
+//           btn.disabled = true;
+//   function test(){
+//     if(input.checked==true){
+//        btn.disabled = false;
+//        input.checked==false;
+//       btn.style.background="#F9530A";
+//       }else{
+//        btn.style.background="#8297FD";
+//        btn.disabled = true;
+//       alert('请勾选->我已阅读并接受《用户协议》');
+//     };
+// };
+
+
+     var aaa = document.getElementById('aaa');
+     var zzz = document.getElementById('zzz');
+     function test(){
+      if(aaa.checked==true){
+          zzz.disabled=false;
+
       }else{
-       btn.style.background="#8297FD";
-       btn.disabled = true;
+      zzz.disabled=true;
+    alert("请勾选->我已阅读并接受《用户协议》");
+
+      }
+     }
+  function inp(){
+    if(aaa.checked==true){
+      zzz.disabled = false;
+       aaa.checked==false;
+      }else{
+      zzz.disabled = true;
       alert('请勾选->我已阅读并接受《用户协议》');
     };
 };
