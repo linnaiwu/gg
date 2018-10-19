@@ -54,7 +54,9 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		Route::get("/dels","Admin\AdminuserController@del");
 		// 商品管理
 		Route::resource("/adminshop","Admin\ShopController");
-
+		//友情链接列表
+		Route::resource("/linklist","Admin\LinklistController");
+		Route::get('/doedit','Admin\LinklistController@doedit');
 });
 
 

@@ -24,7 +24,7 @@ class Homelinkinsert extends FormRequest
     public function rules()
     {
         return [
-            'lname'=>'required|regex:/\w{6,16}/',
+            'lname'=>'required',
             'lurl'=>'required|url',
             'email'=>'required|email',
             'descr'=>'required'
@@ -34,7 +34,6 @@ class Homelinkinsert extends FormRequest
     public function messages(){
         return [
             'lname.required'=>'名字不能为空',
-            'lname.regex'=>'名字必须是6-16位数字下划线字母',
             'lurl.required'=>'地址不能为空',
             'lurl.url'=>'url格式不对',
             'email.required'=>'Email不能为空',
