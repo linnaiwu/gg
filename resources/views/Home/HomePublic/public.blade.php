@@ -181,7 +181,7 @@
      <!--Begin 购物车未登录 Begin--> 
      <div class="un_login">
       还未登录！
-      <a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！
+      <a href="/homelogin" style="color:#ff4e00;">马上登录</a> 查看购物车！
      </div> 
      <!--End 购物车未登录 End--> 
      <!--Begin 购物车已登录 Begin--> 
@@ -197,25 +197,6 @@
         <font color="#ff4e00">￥399</font> X1
        </div> </li> 
       <li> 
-       <div class="img">
-        <a href="#"><img src="/static/homes/images/car2.jpg" width="58" height="58" /></a>
-       </div> 
-       <div class="name">
-        <a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a>
-       </div> 
-       <div class="price">
-        <font color="#ff4e00">￥399</font> X1
-       </div> </li> 
-      <li> 
-       <div class="img">
-        <a href="#"><img src="/static/homes/images/car2.jpg" width="58" height="58" /></a>
-       </div> 
-       <div class="name">
-        <a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a>
-       </div> 
-       <div class="price">
-        <font color="#ff4e00">￥399</font> X1
-       </div> </li> 
      </ul> 
      <div class="price_sum">
       共计&nbsp; 
@@ -223,7 +204,7 @@
       <span>1058</span>
      </div> 
      <div class="price_a">
-      <a href="#">去购物车结算</a>
+      <a href="/Cart">去购物车结算</a>
      </div> 
      <!--End 购物车已登录 End--> 
     </div> 

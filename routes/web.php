@@ -91,3 +91,13 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/code","Home\RegisterController@code");
 	//激活
 	Route::get("/jihuo","Home\RegisterController@jihuo");
+	//购物车
+	Route::resource('/Cart',"Home\CartController");
+	//加操作
+	Route::get('/jia',"Home\CartController@jia");
+	//减操作
+	Route::get('/jian',"Home\CartController@jian");	
+	//购物车删除
+	Route::get('/Carts/{id}',"Home\CartController@del");
+	//订单列表
+	Route::resource('/order',"Home\OrderlistController");

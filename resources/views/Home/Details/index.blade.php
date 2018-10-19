@@ -50,11 +50,15 @@
      </div> 
      <div class="des_join"> 
       <div class="j_nums"> 
-       <input type="text" value="1" name="" class="n_ipt" /> 
+      <form action="/Cart" method="post">
+       <input type="text" value="1" name="num" class="n_ipt" /> 
        <input type="button" value="" onclick="addUpdate(jq(this));" class="n_btn_1" /> 
        <input type="button" value="" onclick="jianUpdate(jq(this));" class="n_btn_2" /> 
       </div> 
-      <span class="fl"><a onclick="ShowDiv_1('MyDiv1','fade1')"><img src="/static/homes/images/j_car.png" /></a></span> 
+      {{csrf_field()}}
+      <input type="hidden" name="id" value="{{$row->id}}">
+      <span class="fl"><button style="background:url('/static/homes/images/j_car.png');width:180px;height:200px;">购物车</button></span> 
+      </form>
      </div> 
     </div> 
     @endforeach
@@ -101,7 +105,7 @@
         </tr> 
         <tr height="50" valign="bottom"> 
          <td>&nbsp;</td> 
-         <td><a href="#" class="b_sure">去购物车结算</a><a href="#" class="b_buy">继续购物</a></td> 
+         <td><a href="#" class="b_sure">去购物车结算</a><a href="" class="b_buy">继续购物</a></td> 
         </tr> 
        </tbody>
       </table> 
