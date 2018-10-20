@@ -39,6 +39,7 @@ class HomeController extends Controller
                 $gg = DB::table("admin_notice")->select()->get();
                 // 获取商品数据
                 $goods = DB::table("pro_goods")->select()->get();
+                echo session('username');
                 // 加载模版
                 return view("Home.Home.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
         }
@@ -111,5 +112,10 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function gonggao($id){
+        echo $id;
+        $cate = self::getCatesByPid(0);
+        return view('Home.gonggao.index',['cate'=>$cate]);
     }
 }
