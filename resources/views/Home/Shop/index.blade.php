@@ -43,7 +43,7 @@
                 <ul class="cate_list">
                                     @foreach($goods as $row)
                     <li >
-                        <div class="img"><a href="/details"><img src="{{$row->pic}}" width="210" height="185" /></a></div>
+                        <div class="img"><a href="/details/{{$row->id}}"><img src="{{$row->pic}}"  width="210" height="185" /></a></div>
                         <div class="price">
                             <font>￥<span>{{$row->price}}</span></font> &nbsp; 
                         </div>

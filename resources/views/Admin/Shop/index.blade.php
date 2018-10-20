@@ -39,7 +39,7 @@
         <td class=" ">{{$row->producer}}</td>
         <td class=" ">
           <form action="/adminshop/{{$row->gid}}" method="post">
-            <button class="btn btn-success">删除</button>
+            <button class="btn btn-success" onclick="return confirm('确 定 删 除 吗 ?')">删除</button>
             {{method_field("DELETE")}}
             {{csrf_field()}}
           </form>

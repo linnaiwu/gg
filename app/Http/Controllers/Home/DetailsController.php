@@ -12,8 +12,13 @@ class DetailsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+         $cate = HomeController::getCatesByPid(0);
+        // 加载模版
+        $dataa[] = DB::table("pro_goods")->select()->first(); 
+        // dd($dataa);
+        return view("Home.Details.index",['cate'=>$cate,'dataa'=>$dataa]);
         
     }
 
