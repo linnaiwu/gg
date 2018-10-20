@@ -39,7 +39,7 @@
   <center>
 
          @if(session('zhuc'))
-            <h2 style="color:#FF4646"> {{session('zhuc')}}</h2>
+            <h2 style="color:#5CB85C"> {{session('zhuc')}}</h2>
         @endif 
   </center>
         <span class="fr">
@@ -98,9 +98,18 @@
                   {{ $error }}
                  @endforeach
               @endif
-
                 <input type="password" name="repassword" value="" class="l_pwd" /></td>
               </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;手机号 &nbsp;</td>
+                <td style="color:red">
+             @if (count($errors)>0)
+                 @foreach ($errors->get('phone') as $error)
+                  {{ $error }}
+                 @endforeach
+              @endif
+                <input type="text" name="phone" value="{{old('phone')}}" class="l_email" /></td>
+              </tr>              
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;邮箱 &nbsp;</td>
                 <td style="color:red">

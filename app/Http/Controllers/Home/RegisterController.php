@@ -119,7 +119,7 @@ class RegisterController extends Controller
         if($vcode==$fcode){
             //注册用户
             //获取需要插入的数据
-            $data=$request->only(['email','password','username']);
+            $data=$request->only(['email','password','username','phone']);
             //密码加密
             $data['password']=Hash::make($data['password']);
 
@@ -134,7 +134,7 @@ class RegisterController extends Controller
                 $res=$this->sendMail($id,$data['token'],$data['email']);
                 if($res){
                     
-            return redirect("/register/create")->with('zhuc','注册成功,请登录邮箱激活');
+            return redirect("/register/create")->with('zhuc','～～注册成功,请登录邮箱激活～～');
                 }
             }   
         }else{

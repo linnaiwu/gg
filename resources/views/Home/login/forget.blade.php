@@ -62,7 +62,7 @@
               <tr height="50" valign="top">
             <div> <span class="fl" style="font-size:24px;" >密码找回</span></div></br>
             <div> <span class="fl zz" style="font-size:16px;" ><a href="/emailget">通过邮箱找回</a></span></div></br>
-            <div> <span class="fl zz" style="font-size:16px;" ><a href="">通过手机号找回</a></span></div></br>
+            <div> <span class="fl zz" style="font-size:16px;" ><a href="/phone">通过手机号找回</a></span></div></br>
             <div> <span class="fl zz" style="font-size:16px;" ><a href="">通过安全问题找回</a></span></div></br>
              </tr>
 

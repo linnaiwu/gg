@@ -83,6 +83,10 @@ Route::resource("/link","Home\LinkController");
 	Route::post("/doemailget","Home\HomeloginController@doemailget");
 	Route::get("/reset","Home\HomeloginController@reset");
 	Route::post("/doreset","Home\HomeloginController@doreset");
+		//短信找回
+	Route::get("/phone","Home\HomeloginController@phone");
+	Route::get("/dophone","Home\HomeloginController@dophone");
+	Route::post("/dodophone","Home\HomeloginController@dodophone");
 	//测试邮件发送
 	Route::get("/send","Home\RegisterController@send");
 	//测试邮件发送2

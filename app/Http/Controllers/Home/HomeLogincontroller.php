@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 //导入表单验证
 use App\Http\Requests\HomeResetinsert;
+use App\Http\Requests\PhoneResetinsert;
 use DB;
 use Hash;
 use Mail;
@@ -183,11 +184,44 @@ class HomeLogincontroller extends Controller
         }
     }
 
-    //短信发送
+    //加载短信发送模板
     public function phone(){
-       sendsphone('18818846242');
-       
-       return view("home.phone.phone");
+
+      return view("home.phone.phone");
+    }
+
+    //执行短信发送
+    public function dophone(Request $request){
+       // sendsphone('18818846242');
+        $phone=$request->input('phone');
+        // echo $phone;
+            // echo 123;exit;
+           $userdd=DB::table("users")->where("phone",'=',$phone)->first();
+           if($userdd){
+            //发送手机号码
+                // sendsphone($phone);
+            echo 1;
+           }else{
+                echo 2;
+           }
+    }
+    //短信重置密码
+    public function dodophone(PhoneResetinsert $request){
+        // dd("--");
+    //获取模板的验证码
+        $code=$request->input('code');
+     //获取cookie里的验证码
+        $ecode=$request->cookie('ecode');
+        //加密传过来的密码
+     $password=Hash::make($request->input('password'));
+     $phone=$request->input('phone');
+        if($code==$ecode){
+        DB::table("users")->where("phone",'=',$phone)->update(['password'=>$password]);
+        return redirect("/phone")->with('pp','～～修改码密码成功,请登录～～');
+        }else{
+          return redirect("/phone")->with('yanz','验证码不对');
+        }
+ 
     }
 
 }
