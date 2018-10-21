@@ -62,7 +62,12 @@
                 </td>
               </tr>
               <tr height="70">
-                <td align="right"><a href="#"><img src="/static/homes/images/btn_sure.gif" /></a></td>
+                <form action="/orders" method="post">
+                <input type="hidden" name="aid" value="{{$addr->id}}">
+                <input type="hidden" name="total" value="{{$total}}">
+                {{csrf_field()}}
+                <td align="right"><input type="submit" value="" style="background:url(/static/homes/images/btn_sure.gif) no-repeat center; width:150px;height:45px;"></td>
+                </form>
               </tr>
             </table>
 @endsection

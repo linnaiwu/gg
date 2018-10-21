@@ -54,6 +54,7 @@ class HomeLogincontroller extends Controller
             if(Hash::check($password,$info->password)){
                 //将登录用户名存入session
                  session(['homename'=>$name]);
+                 
                  //跳转后台首页
                   return redirect("/home");
                 }else{

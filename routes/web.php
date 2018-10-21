@@ -103,5 +103,11 @@ Route::resource("/link","Home\LinkController");
 	Route::get('/jian',"Home\CartController@jian");	
 	//购物车删除
 	Route::get('/Carts/{id}',"Home\CartController@del");
-	//订单列表
+	//确认订单
 	Route::resource('/order',"Home\OrderlistController");
+	//提交订单
+	Route::post('/orders',"Home\OrderlistController@order");
+	//结算页
+	Route::get("/ordersss/{aid}","Home\OrderlistController@orders");
+	//提交订单
+	Route::get("/orderlist","Home\OrderlistController@orderlist");
