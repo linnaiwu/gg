@@ -50,12 +50,7 @@
                         <div class="name"><a href="#">{{$row->name}}</a></div>
                         <div class="carbg">
                             <a href="#" class="ss">收藏</a>
-                            <form action="/Cart" method="post">
-                            <input type="hidden" name="id" value="{{$row->id}}">
-                            <input type="hidden" name="num" value="1">
-                            <button  class="j_car" style="width20px;height:30px;background:#FF4E00;color:#FFFFFF">加入购物车</button>
-                            {{csrf_field()}}
-                            </form>
+                            <a href="#" class="j_car">加入购物车</a>
                         </div>
                     </li>
                     @endforeach

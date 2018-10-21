@@ -68,7 +68,6 @@ class CartController extends Controller
           }else{
 
               $cart = session('cart');
-
               $num = $data['num'];
               foreach($cart as $k=>$v){
                 if($data['id']==$v['id']){

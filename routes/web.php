@@ -105,8 +105,3 @@ Route::resource("/link","Home\LinkController");
 	Route::get('/Carts/{id}',"Home\CartController@del");
 	//订单列表
 	Route::resource('/order',"Home\OrderlistController");
-	// 个人中心
-	Route::resource('/core',"Home\CoreController");
-	Route::resource('/core/{id}',"Home\CoreController@die");
-
-
