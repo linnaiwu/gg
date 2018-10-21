@@ -150,7 +150,7 @@
   </div> 
   <div class="top"> 
    <div class="logo">
-    <a href="Index.html"><img src="/static/homes/images/logo.png" /></a>
+    <a href="/"><img src="/static/homes/images/logo.png" /></a>
    </div> 
    <div class="search"> 
     <form> 
@@ -395,7 +395,7 @@
    @foreach($cate as $row)
     <span class="fl"><b>·</b>&nbsp;{{$row->name}}&nbsp;</span> 
     @foreach($row->dev as $rr)
-    <span class="i_mores fr ll" ><a href="/home/{{$rr->id}}">{{$rr->name}}</a>&nbsp; &nbsp;</span> 
+    <span class="i_mores fr ll" ><a href="">{{$rr->name}}</a>&nbsp; &nbsp;</span> 
     @endforeach
    @endforeach
    </div> 
@@ -428,7 +428,7 @@
         <a href="#"></a>
        </div> 
        <div class="img">
-        <a href="#"><img src="{{$rr->pic}}" width="185" height="155" /></a>
+        <a href="/details/{{$rr->id}}"><img src="{{$rr->pic}}" width="185" height="155" /></a>
        </div> 
        <div class="price"> 
        <font class="fl">{{$rr->name}}</font>

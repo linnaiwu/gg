@@ -168,7 +168,7 @@
   </div> 
   <div class="top"> 
    <div class="logo">
-    <a href="Index.html"><img src="/static/homes/images/logo.png" /></a>
+    <a href="/"><img src="/static/homes/images/logo.png" /></a>
    </div> 
    <div class="search"> 
     <form> 
