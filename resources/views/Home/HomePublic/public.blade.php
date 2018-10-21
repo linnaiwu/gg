@@ -123,7 +123,7 @@
     <!--End 所在收货地区 End--> 
        @if(empty(session('homename')))你好,请<a href="/homelogin">登录</a>&nbsp; <a href="/register/create" style="color:#ff4e00;">免费注册</a>
     @else
-    <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="">退出&nbsp;</a><a href="">个人中心</a>
+    <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="">退出&nbsp;</a><a href="/core">个人中心</a>
 
     @endif
     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
@@ -168,7 +168,7 @@
   </div> 
   <div class="top"> 
    <div class="logo">
-    <a href="Index.html"><img src="/static/homes/images/logo.png" /></a>
+    <a href="/"><img src="/static/homes/images/logo.png" /></a>
    </div> 
    <div class="search"> 
     <form> 

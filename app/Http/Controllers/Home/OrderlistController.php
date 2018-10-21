@@ -45,8 +45,6 @@ class OrderlistController extends Controller
 
         $addr = DB::table('address')->where('uid','=',$id)->first();
 
-       
-
         return view('Home.Order.index',['cate'=>HomeController::getCatesByPid(0),'data'=>$data,'total'=>$total,'addr'=>$addr]);
     }
 
