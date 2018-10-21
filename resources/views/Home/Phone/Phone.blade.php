@@ -76,7 +76,7 @@ font-size:20px;
 
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;手机号 &nbsp;</td>
-                <td style="color:red" > @if(session('yanz')) {{session('yan')}} @endif<p id="www"></p>
+                <td style="color:red" >@if(session('yanz')) {{session('yanz')}} @endif<p id="www"></p>
 
                 <input type="text" name="phone" value="{{old('phone')}}" class="l_user" />
                  </td>

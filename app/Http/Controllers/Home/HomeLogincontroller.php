@@ -54,7 +54,6 @@ class HomeLogincontroller extends Controller
             if(Hash::check($password,$info->password)){
                 //将登录用户名存入session
                  session(['homename'=>$name]);
-                 
                  //跳转后台首页
                   return redirect("/home");
                 }else{
@@ -200,7 +199,7 @@ class HomeLogincontroller extends Controller
            $userdd=DB::table("users")->where("phone",'=',$phone)->first();
            if($userdd){
             //发送手机号码
-                // sendsphone($phone);
+          sendsphone($phone);
             echo 1;
            }else{
                 echo 2;
@@ -213,6 +212,7 @@ class HomeLogincontroller extends Controller
         $code=$request->input('code');
      //获取cookie里的验证码
         $ecode=$request->cookie('ecode');
+        // dd($code);
         //加密传过来的密码
      $password=Hash::make($request->input('password'));
      $phone=$request->input('phone');
