@@ -92,6 +92,11 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/phone","Home\HomeloginController@phone");
 	Route::get("/dophone","Home\HomeloginController@dophone");
 	Route::post("/dodophone","Home\HomeloginController@dodophone");
+		//收货地址
+	Route::resource("/address","Home\AddressController");
+	Route::get("/ajaxaddr","Home\AddressController@ajaxaddr");
+	Route::get("/addrdel","Home\AddressController@addrdel");
+	Route::get("/status","Home\AddressController@status");
 	//测试邮件发送
 	Route::get("/send","Home\RegisterController@send");
 	//测试邮件发送2

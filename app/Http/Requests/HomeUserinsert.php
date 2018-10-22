@@ -29,7 +29,7 @@ class HomeUserinsert extends FormRequest
             'password'=>'required|regex:/\w{6,16}/',
             'repassword'=>'required|regex:/\w{6,16}/|same:password',
             'email'=>'required|email',
-            'phone'=>'required|regex:/\S{11}/'
+            'phone'=>'required|regex:/^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/'
 
         ]; 
     }
