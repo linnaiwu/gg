@@ -114,7 +114,7 @@ class HomeController extends Controller
         //
     }
     public function gonggao($id){
-        echo $id;
+        // echo $id;
         $cate = self::getCatesByPid(0);
         return view('Home.gonggao.index',['cate'=>$cate]);
     }
