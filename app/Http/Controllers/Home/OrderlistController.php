@@ -240,17 +240,7 @@ class OrderlistController extends Controller
      
         $info = DB::table('order')->where('id','=',$id)->first();
         if(DB::table('order')->where('id','=',$id)->delete()){
-                $info = DB::table('orders')->where('oid','=',$id)->first();
-
-                $gid = explode(',',$info->gid);
-                $num = explode(',',$info->num);
-                for($i=0;$i<count($gid);$i++){
-                  $n = DB::table('pro_goods')->where('id','=',$gid[$i])->value('stock');
-                  $n+=$num[$i];
-                  DB::table('pro_goods')->where('id','=',$gid[$i])->update(['stock'=>$n]);
-                }
-
-                DB::table('orders')->where('oid','=',$id)->delete();
+             DB::table('orders')->where('oid','=',$id)->delete();
                
             return redirect('/orderlist');
         }

@@ -57,6 +57,10 @@ Route::group(['middleware'=>'adminlogin'],function(){
 		//友情链接列表
 		Route::resource("/linklist","Admin\LinklistController");
 		Route::get('/doedit','Admin\LinklistController@doedit');
+		//订单列表
+		Route::resource("/adminorderlist","Admin\OrderController");
+		//后台支付状态
+		Route::get("/adminorderstatus/{id}","Admin\OrderController@status");
 });
 
 

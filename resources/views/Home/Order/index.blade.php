@@ -16,7 +16,6 @@
               <tr>
                 <td class="car_th" width="550">商品名称</td>
                 <td class="car_th" width="150">购买数量</td>
-                <td class="car_th" width="140">商品描述</td>
                 <td class="car_th" width="130">小计</td>
               </tr>
               @foreach($data as $v)
@@ -26,7 +25,6 @@
                    {{$v['name']}}
                 </td>
                 <td align="center">{{$v['num']}}</td>
-                <td align="center">{!!$v['descr']!!}</td>
                 <td align="center" style="color:#ff4e00;">{{$v['price']}}</td>
           
               </tr>
