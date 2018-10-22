@@ -81,6 +81,7 @@ Route::resource("/link","Home\LinkController");
 	Route::resource("/register","Home\RegisterController");
 	//前台登录
 	Route::resource("/homelogin","Home\HomeloginController");
+	Route::get("/pull","Home\HomeloginController@pull");
 	//找回密码
 	Route::get("/forget","Home\HomeloginController@forget");
 	//邮箱找回

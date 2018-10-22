@@ -25,6 +25,13 @@ class HomeLogincontroller extends Controller
        return view("home.login.login");
     }
 
+//注销登录
+    public function pull(Request $request){
+        // unset(session('homename'));
+        $request->session()->pull('homename');
+      return  redirect("/homelogin");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

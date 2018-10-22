@@ -27,15 +27,8 @@
 <!--Begin Header Begin-->
 <div class="soubg">
 	<div class="sou">
-    	<!--Begin 所在收货地区 Begin-->
-    	<span class="s_city_b">
-        	<span class="fl">送货至：</span>
-            <span class="s_city">
-                </span>
-        </span>
-        <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">你好，$session('home')<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+        	<span class="fl">你好,{{session('homename')}}&nbsp;&nbsp;<a href="/pull" style="color:#ff4e00;">退出</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
@@ -58,18 +51,6 @@
                             	<li><a href="#">客户服务</a></li>
                                 <li><a href="#">客户服务</a></li>
                                 <li><a href="#">客户服务</a></li>
-                            </ul>
-                        </div>
-                    </div>    
-                </div>
-                <div class="ss_list">
-                	<a href="#">网站导航</a>
-                    <div class="ss_list_bg">
-                    	<div class="s_city_t"></div>
-                        <div class="ss_list_c">
-                        	<ul>
-                            	<li><a href="#">网站导航</a></li>
-                                <li><a href="#">网站导航</a></li>
                             </ul>
                         </div>
                     </div>    
