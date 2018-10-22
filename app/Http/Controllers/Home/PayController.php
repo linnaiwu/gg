@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
 class PayController extends Controller
 {
     /**
@@ -15,7 +15,9 @@ class PayController extends Controller
     public function index()
     {
         // pay(订单号,订单名字,订单金额,订单描述);
-        pay(time(),'商品测试',"0.01","商品测试");
+        // $a=pay();
+        // dd($id);
+
     }
 
     // 通知界面
@@ -86,5 +88,10 @@ class PayController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function zfb($id){
+      $info  =  DB::table('order')->where('id','=',$id)->first();
+
+      pay($info->oid,$id);
     }
 }

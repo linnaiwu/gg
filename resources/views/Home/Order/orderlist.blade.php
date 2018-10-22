@@ -69,7 +69,7 @@
                 <td>{{$v->address}}</td>
                 <td>
                 @if($v->status==0)
-                <a href="/zt/{{$v->sid}}">{{$status[$v->status]}}</a>
+                <a href="/pays">{{$status[$v->status]}}</a>
                 @elseif($v->status==1)
                 {{$status[$v->status]}}
                 @elseif($v->status==2)

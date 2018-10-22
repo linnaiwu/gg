@@ -126,3 +126,6 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/zt/{id}","Home\OrderlistController@status");
 	//取消订单
 	Route::get("/ddxh/{id}",'Home\OrderlistController@del');
+	//支付宝接口调用
+	Route::get("/pays/{id}","Home\PayController@zfb");
+
