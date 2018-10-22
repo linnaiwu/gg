@@ -112,3 +112,7 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/ordersss/{aid}","Home\OrderlistController@orders");
 	//提交订单
 	Route::get("/orderlist","Home\OrderlistController@orderlist");
+	//支付状态
+	Route::get("/zt/{id}","Home\OrderlistController@status");
+	//取消订单
+	Route::get("/ddxh/{id}",'Home\OrderlistController@del');

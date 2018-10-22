@@ -169,6 +169,10 @@
        <li> <a href=""><i class="icon-file"></i> 友情链接管理</a> 
        <ul class="closed"> 
         <li><a href="/linklist">友情链接列表</a></li> 
+       </ul> </li> 
+       <li> <a href=""><i class="icon-file"></i> 订单管理</a> 
+       <ul class="closed"> 
+        <li><a href="/adminorderlist">订单列表</a></li> 
        </ul> </li>  
      </ul> 
      

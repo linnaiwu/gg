@@ -142,23 +142,26 @@ class OrderlistController extends Controller
 
         // //订单详情
         $cart = session('cart');
- 
+        
         foreach($cart as $k=>$v){
-           $datas['oid'] = $id;
-           $datas['gid'] = $v['id'];
-           $datas['num'] = $v['num'];
-           $datas['status'] = 0;
-           $price = DB::table('pro_goods')->where('id','=',$v['id'])->value('price');
-           $datas['price'] = $price; 
-           $result = DB::table('orders')->insert($datas);
+            $price[] = DB::table('pro_goods')->where('id','=',$v['id'])->value('price');
+            $gid[] = $v['id'];
+            $num[] = $v['num'];
         }
+        // dd($price);
+        $datas['gid'] = implode(',',$gid);
+        $datas['num'] = implode(',',$num);
+        $datas['oid'] = $id;
+        $datas['status'] = 0;
+        $datas['price'] = implode(',',$price);
+        $result = DB::table('orders')->insert($datas);
 
-         
-
+        
 
       
 
         if($id && $result){
+            $request->session()->pull('cart');
             return redirect('/ordersss/'.$id);
         }
         
@@ -178,9 +181,83 @@ class OrderlistController extends Controller
     public function orderlist(){
         $name = session('homename');
         $info = DB::table('users')->where('username','=',$name)->first();
-        $data = DB::table('users')->join('order','order.uid','=','users.id')->join('orders','orders.oid','=','order.id')->join('address','order.aid','=','address.id')->select('order.oid','order.total','order.status','order.addtime','orders.gid','orders.num','address.*','users.id')->get();
-        dd($data);
+        $data = DB::table('users')->join('order','order.uid','=','users.id')->join('orders','orders.oid','=','order.id')->join('address','order.aid','=','address.id')->select('order.oid','order.total','order.status','order.addtime','orders.gid','orders.num','address.*','users.id','orders.price','order.id as sid')->get();
+
+        // var_dump($data);die;
+        $datas=[];
+       foreach($data as $k=>$v){
+            if($info->id==$v->id){
+                $gid =explode(',',$v->gid);
+                $num =explode(',',$v->num);
+                $price =explode(',',$v->price);
+                foreach($gid as $key=>$value){
+                  $v->dev[$key] = DB::table('pro_goods')->where('id','=',$value)->first();
+                  $v->dev[$key]->num = $num[$key];
+                  $v->dev[$key]->price = $price[$key];
+                }
+                $datas[] = $v;
+            }
+
+       }
+       // dd($datas);
+   
+       $status = ['立即付款','待发货','确认收货','交易完成'];
        
-        // return view('Home.Order.orderlist',['cate'=>HomeController::getCatesByPid(0),'row'=>$row]);
+        return view('Home.Order.orderlist',['cate'=>HomeController::getCatesByPid(0),'data'=>$datas,'status'=>$status]);
     }
+
+
+    public function status($id){
+
+    
+        // echo $id;
+        $info = DB::table('order')->where('id','=',$id)->first();
+        
+        if($info->status==0){
+            if(DB::table('order')->where('id','=',$id)->update(['status'=>1])){
+               $data= DB::table('orders')->where('oid','=',$info->id)->first();
+               $gid =explode(',',$data->gid);
+               $num = explode(',',$data->num);
+               for($i=0;$i<count($gid);$i++){
+                $n = DB::table('pro_goods')->where('id','=',$gid[$i])->value('stock');
+                $stock = $n-$num[$i];
+                DB::table('pro_goods')->where('id','=',$gid[$i])->update(['stock'=>$stock]);
+               
+            }
+             return redirect('/orderlist');
+        }
+    }
+
+    if($info->status==2){
+       if(DB::table('order')->where('id','=',$id)->update(['status'=>3])){
+            return redirect('/orderlist');
+       }
+
+    }
+}
+
+ public function del($id){
+     
+        $info = DB::table('order')->where('id','=',$id)->first();
+        if(DB::table('order')->where('id','=',$id)->delete()){
+                $info = DB::table('orders')->where('oid','=',$id)->first();
+
+                $gid = explode(',',$info->gid);
+                $num = explode(',',$info->num);
+                for($i=0;$i<count($gid);$i++){
+                  $n = DB::table('pro_goods')->where('id','=',$gid[$i])->value('stock');
+                  $n+=$num[$i];
+                  DB::table('pro_goods')->where('id','=',$gid[$i])->update(['stock'=>$n]);
+                }
+
+                DB::table('orders')->where('oid','=',$id)->delete();
+               
+            return redirect('/orderlist');
+        }
+
+    }
+        
+    
+       
+    
 }

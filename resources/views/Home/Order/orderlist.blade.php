@@ -5,7 +5,7 @@
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
   <div class="m_content">
-      <div class="m_left">
+      <div class="m_left"> 
           <div class="left_n">管理中心</div>
             <div class="left_m">
               <div class="left_m_t t_bg1">订单中心</div>
@@ -49,33 +49,57 @@
             <div class="mem_tit">我的订单</div>
             <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
               <tr>                                                                                                                                                    
-                <td width="10%">订单号</td>
-                <td width="10%">下单时间</td>
-                <td width="10%">商品名</td>
-                <td width="5%">总金额</td>
+                <td width="10%"></td>
+                <td width="10%"></td>
+                <td width="15%" colspan="2">下单时间</td>
+                <td width="8%">总金额</td>
                 <td width="5%">姓名</td>
-                 <td width="15%">电话</td>
+                <td width="15%">电话</td>
                 <td width="15%">收货人地址</td>
-                <td width="5%">订单状态</td>
+                <td width="10%">订单状态</td>
                 <td width="15%">操作</td>
               </tr>
-              @foreach($row as $v)
+              @foreach($data as $v)
               <tr>
-                <td><font color="#ff4e00">{{$v->oid}}</font></td>
-                <td>{{$v->addtime}}</td>
-              
-                <td></td>
-           
+                <td colspan="2" align="left">订单号: <font color="#ff4e00">{{$v->oid}}</font></td>
+                <td colspan="2" align="left">{{$v->addtime}}</td>
                 <td>{{$v->total}}</td>
                 <td>{{$v->name}}</td>
                 <td>{{$v->phone}}</td>
                 <td>{{$v->address}}</td>
-                <td>{{$v->status}}</td>
-                <td>取消订单</td>
-
+                <td>
+                @if($v->status==0)
+                <a href="/zt/{{$v->sid}}">{{$status[$v->status]}}</a>
+                @elseif($v->status==1)
+                {{$status[$v->status]}}
+                @elseif($v->status==2)
+                <a href="/zt/{{$v->sid}}">{{$status[$v->status]}}</a>
+                @elseif($v->status==3)
+                {{$status[$v->status]}}
+                @endif
+                </td>
+                <td>
+                  <p>查看物流<p>
+                  @if($v->status==0)
+                  <a href="/ddxh/{{$v->sid}}">取消订单</a>
+                  @endif
+                </td>
               </tr>
-             @endforeach
+              @foreach($v->dev as $vv)
+              <tr>
+                <td>商品名:</td>         
+                <td>{{$vv->name}}</td>     
+                <td colspan="4"><img src="{{$vv->pic}}"></td>
+                <td>价格:{{$vv->price}}</td>
+                <td>数量:x{{$vv->num}}</td>
+                <td align="left" colspan="2">产地:{{$vv->producer}}</td>
+              </tr>
+              @endforeach
+              @endforeach
             </table>        
         </div>
     </div>
+    <script>
+
+    </script>
 @endsection
