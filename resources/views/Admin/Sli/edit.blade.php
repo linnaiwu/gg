@@ -15,7 +15,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">旧图片:</label> 
        <div class="mws-form-item"> 
-       <img src="{{$data->pic}}" alt="">
+       <img src="{{$data->pic}}" alt="" width="120px" height="120px">
        </div> 
       </div> 
      <div class="mws-form-inline"> 
@@ -40,15 +40,15 @@
 	 >隐藏
        </div> 
       </div>
-   
+  
       
      </div> 
      <div class="mws-button-row">
-      {{method_field('PUT')}}
-      {{csrf_field()}}
+     
       <input type="submit" value="Submit" class="btn btn-danger" /> 
       <input type="reset" value="Reset" class="btn " /> 
-     </div> 
+     </div>   {{method_field('PUT')}}
+      {{csrf_field()}}
     </form> 
    </div> 
   </div>

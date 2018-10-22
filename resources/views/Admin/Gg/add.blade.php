@@ -28,7 +28,7 @@
        <label class="mws-form-label">状态:</label> 
        <div class="mws-form-item"> 
           <input type="radio" name="status" value="1" >显示
-              <input type="radio" name="status" value="2">隐藏
+          <input type="radio" name="status" value="2">隐藏
        </div> 
       </div>
       

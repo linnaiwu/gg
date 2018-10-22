@@ -35,7 +35,10 @@
         <td class="sorting_1 ">
           <img src="{{$row->pic}}" alt="" width="112px" height="138px">
         </td> 
-        <td class="sorting_1">{{$row->status}}</td> 
+        <td class="sorting_1">
+        @if($row->status == 1 ) 显示 @endif
+        @if($row->status == 2 ) 隐藏 @endif
+        </td> 
         
        
         <td class="sorting_1 ">

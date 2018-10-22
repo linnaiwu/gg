@@ -35,7 +35,10 @@
         <td class=" ">{!!$row->descr!!}</td>
         <td class=" ">{{$row->price}}</td>
         <td class=" ">{{$row->stock}}</td>
-        <td class=" ">{{$row->display}}</td>
+        <td class=" ">
+        @if($row->display ==1) 上架 @endif
+        @if($row->display ==0) 下架 @endif
+        </td>
         <td class=" ">{{$row->producer}}</td>
         <td class=" ">
           <form action="/adminshop/{{$row->gid}}" method="post">

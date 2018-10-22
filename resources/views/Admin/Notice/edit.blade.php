@@ -28,6 +28,13 @@
        </div> 
       </div> 
       <div class="mws-form-row"> 
+       <label class="mws-form-label">状态:</label> 
+       <div class="mws-form-item"> 
+          <input type="radio" name="status" value="0" @if($data->status ==0) checked @endif>隐藏
+          <input type="radio" name="status" value="1" @if($data->status ==1) checked @endif>显示
+       </div> 
+      </div>
+      <div class="mws-form-row"> 
        <label class="mws-form-label">公告内容:</label> 
        <div class="mws-form-item"> 
         <script id="editor" type="text/plain" name="descr" style="width:800px;height:500px;">{!!$data->descr!!}

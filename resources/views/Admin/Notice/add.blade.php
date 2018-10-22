@@ -27,6 +27,13 @@
         <input type="text" class="large" name="title" /> 
        </div> 
       </div> 
+       <div class="mws-form-row"> 
+       <label class="mws-form-label">状态:</label> 
+       <div class="mws-form-item"> 
+          <input type="radio" name="status" value="0" >隐藏
+          <input type="radio" name="status" value="1">显示
+       </div> 
+      </div>
       <div class="mws-form-row"> 
        <label class="mws-form-label">公告说明:</label> 
        <div class="mws-form-item"> 

@@ -81,12 +81,12 @@ class NoticeController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
-        $info=$request->only('title','descr');
+        $info=$request->only('title','descr','status');
         // dd($info);
         if(DB::table('admin_notice')->where('id','=',$id)->update($info)){
             return redirect("/notice")->with('success','修改成功');
         }else{
-            return redirect("/notice")->with('success','修改失败');
+            return redirect("/notice")->with('error','修改失败');
         }
     }
 

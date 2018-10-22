@@ -13,13 +13,6 @@
    <div class="mws-panel-body no-padding"> 
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
 
-    <form action="/adminuser" method="get">
-     <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>搜索用户名: <input type="text" aria-controls="DataTables_Table_1" name="keywords" value="{{$request['keywords'] or ''}}" /></label>
-      <input type="submit" value="搜索">
-     </div>
-      
-    </form>
      <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info"> 
       <thead> 
        <tr role="row">

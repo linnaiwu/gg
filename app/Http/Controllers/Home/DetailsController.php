@@ -15,10 +15,13 @@ class DetailsController extends Controller
     public function index(Request $request)
     {
          $cate = HomeController::getCatesByPid(0);
+         // 获取所有商品数据
+        $goods = DB::table("pro_goods")->select()->get();
+         // 根据商品id查找商品
+        $dataa[0] = DB::table("pro_goods")->select()->first(); 
         // 加载模版
-        $dataa[] = DB::table("pro_goods")->select()->first(); 
         // dd($dataa);
-        return view("Home.Details.index",['cate'=>$cate,'dataa'=>$dataa]);
+        return view("Home.Details.index",['cate'=>$cate,'dataa'=>$dataa,"goods"=>$goods]);
         
     }
 

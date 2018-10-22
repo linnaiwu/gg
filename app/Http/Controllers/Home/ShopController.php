@@ -36,7 +36,7 @@ class ShopController extends Controller
         // dd($cate);
         $gg = DB::table("admin_notice")->select()->get();
         // 获取商品数据
-        $goods = DB::table("pro_goods")->select()->get();
+        $goods = DB::table("pro_goods")->select()->get()->where("display",'=','1');
         // 加载模版
         return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
       

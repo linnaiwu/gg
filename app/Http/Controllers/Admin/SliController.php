@@ -104,14 +104,17 @@ class SliController extends Controller
         // 封装$data
         $data['pic']=trim(Config::get('app.app_uploads')."/".$name.".".$ext,'.');
         // 3.把赋值后的path图片地址上传至数据库
-        if(DB::table('admin_slides')->where("id",'=',$id)->update($data)){
-            unlink(".".$info->pic);
-            return redirect("/slides")->with("success","修改成功");
-            }
-        }else{
             if(DB::table('admin_slides')->where("id",'=',$id)->update($data)){
-            return redirect("/slides")->with("success","修改成功");
-        }
+                unlink(".".$info->pic);
+                return redirect("/slides")->with("success","修改成功");
+                }
+            }else{
+                if(DB::table('admin_slides')->where("id",'=',$id)->update($data)){
+                return redirect("/slides")->with("success","修改成功");
+            }else{
+                return redirect("/slides")->with("error","修改失败");
+
+            }
         }
     }
 

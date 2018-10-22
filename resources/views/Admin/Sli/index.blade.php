@@ -13,13 +13,7 @@
    <div class="mws-panel-body no-padding"> 
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
 
-    <form action="/admincate" method="get">
-     <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>搜索: <input type="text" aria-controls="DataTables_Table_1" name="keywords" value="{{$request['keywords'] or ''}}" /></label>
-      <input type="submit" value="搜索">
-     </div>
-      
-    </form>
+   
      <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info"> 
       <thead> 
        <tr role="row">
@@ -39,7 +33,10 @@
         <td class=" ">
           <img src="{{$row->pic}}" alt="" style="width:122px;height:100px;">
         </td> 
-        <td class=" ">{{$row->status}}</td> 
+        <td class=" ">
+        @if($row->status == 1) 显示 @endif
+        @if($row->status == 2) 隐藏 @endif
+        </td> 
         
        
         <td class=" ">
