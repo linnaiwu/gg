@@ -16,7 +16,7 @@ class CartController extends Controller
     {
         
         $data = session('cart');
-
+        // dd($data);
         if(empty($data)){
             $data = [];
         }
