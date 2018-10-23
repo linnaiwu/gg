@@ -40,10 +40,24 @@ class NoticeController extends Controller
     public function store(Request $request)
     {
         $data=$request->except("_token");
+        $data['time']=date('Y-m-d H:i:s');
+        // dd($data);
+        if(empty($data['title'])){
+            return redirect("/notice/create")->with("error",'标题不能为空');
+
+        }
+        if(empty($data['status'])){
+            return redirect("/notice/create")->with("error",'状态不能为空');
+
+        }
+        if(empty($data['descr'])){
+            return redirect("/notice/create")->with("error",'说明不能为空');
+
+        }
         if(DB::table('admin_notice')->insert($data)){
             return redirect("/notice")->with("success",'添加成功');
         }else{
-            return redirect("/notice")->with("success",'添加失败');
+            return redirect("/notice/create")->with("error",'添加失败');
         }
     }
 

@@ -22,11 +22,13 @@ height:60px;
 }
 </style> 
   <div id="xl-headline"> 
+  
    <div class="layout" style="width: 1191;">
-     111
-    <h2><font color="#0000000"></font></h2> 
+      
+     <center>
+    <h2><font color="#0000000">{{$a->title}}</font></h2></center> 
     <div class="left">发布时间 : 
-    11111
+    {{$a->time}}
     </div> 
     <div class="right"> 
      <div class="cir-btn"> 
@@ -68,7 +70,7 @@ height:60px;
 				</script> 
      </div> 
      <div class="news-con">
-       hsafkaskfjsafsajfhsakjfhsakjfhah 
+      {!!$a->descr!!} 
      </div> 
      <div class="editor"> 
       <div class="cir-btn"> 
