@@ -28,7 +28,7 @@ class OrderlistController extends Controller
         $addr = DB::table('address')->where('uid','=',$id)->first();
         //判断是否有地址(待加)
         if(empty($addr)){
-            return redirect('/');
+            return redirect('/homelogin');
         }
         
 

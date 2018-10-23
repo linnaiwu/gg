@@ -98,6 +98,10 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/ajaxaddr","Home\AddressController@ajaxaddr");
 	Route::get("/addrdel","Home\AddressController@addrdel");
 	Route::get("/status","Home\AddressController@status");
+	//个人账户
+	Route::resource("/meuser","Home\UserController");
+	//账户安全
+	Route::get("/safe","Home\UserController@safe");
 	//测试邮件发送
 	Route::get("/send","Home\RegisterController@send");
 	//测试邮件发送2
