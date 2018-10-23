@@ -127,7 +127,7 @@ Route::resource("/link","Home\LinkController");
 	Route::post('/orders',"Home\OrderlistController@order");
 	//结算页
 	Route::get("/ordersss/{aid}","Home\OrderlistController@orders");
-	//提交订单
+	//订单列表
 	Route::get("/orderlist","Home\OrderlistController@orderlist");
 	//支付状态
 	Route::get("/zt/{id}","Home\OrderlistController@status");

@@ -48,7 +48,7 @@
     <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="/pull">退出&nbsp;</a><a href="/meuser">个人中心</a>
 
     @endif
-    &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
+    &nbsp;|&nbsp;<a href="/orderlist">我的订单</a>&nbsp;|</span> <span class="ss"> 
       <div class="ss_list"> 
        <a href="#">收藏夹</a> 
        <div class="ss_list_bg"> 

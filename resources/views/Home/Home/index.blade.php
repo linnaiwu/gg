@@ -105,10 +105,10 @@
     <span class="fr"> <span class="fl">
     @if(empty(session('homename')))你好,请<a href="/homelogin">登录</a>&nbsp; <a href="/register/create" style="color:#ff4e00;">免费注册</a>
     @else
-    <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="/pull">退出&nbsp;</a><a href="">个人中心</a>
-
+    <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="/pull">退出&nbsp;</a><a href="/meuser">个人中心</a>
+    &nbsp;|&nbsp;<a href="/orderlist">我的订单</a>
     @endif
-    &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
+    &nbsp;|</span> <span class="ss"> 
       <div class="ss_list"> 
        <a href="#">收藏夹</a> 
        <div class="ss_list_bg"> 

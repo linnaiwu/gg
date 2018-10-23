@@ -1,5 +1,5 @@
 @extends("Home.HomePublic.public")
-@section("title","商品")
+@section("title","商品列表")
 
 @section("home")
 <div class="i_bg">
@@ -47,7 +47,7 @@
                         <div class="price">
                             <font>￥<span>{{$row->price}}</span></font> &nbsp; 
                         </div>
-                        <div class="name"><a href="#">{{$row->name}}</a></div>
+                        <div class="name"><a href="/details/{{$row->id}}">{{$row->name}}</a></div>
                         <div class="carbg">
                             <a href="#" class="ss">收藏</a>
                             <form action="/Cart" method="post">

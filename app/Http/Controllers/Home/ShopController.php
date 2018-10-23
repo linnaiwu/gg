@@ -124,8 +124,7 @@ class ShopController extends Controller
     {
         //
     }
-    public function sm($id){
-       // dd($id);
-      
+    public function sm(Request $request){
+      // echo "23";
     }
 }
