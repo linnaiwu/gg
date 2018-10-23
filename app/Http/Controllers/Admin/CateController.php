@@ -155,7 +155,7 @@ class CateController extends Controller
         if(DB::table("cates")->where("id",'=',$id)->update($data)){
             return redirect("/admincate")->with("success",'分类修改成功');
         }else{
-            return redirect("/admincate")->with("error",'分类修改失败');
+            return redirect("/admincate")->with("error",'分类无新修改');
         }
     }
 
@@ -177,6 +177,7 @@ class CateController extends Controller
         // 直接删除
         
         if(DB::table("cates")->where('id','=',$id)->delete()){
+            DB::table("pro_goods")->where("cate_id",'=',$id)->delete();
             return redirect("/admincate")->with('success','删除成功');
         }else{
             return redirect("/admincate")->with('error','删除失败');

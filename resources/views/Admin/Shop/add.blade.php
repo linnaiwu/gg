@@ -13,11 +13,14 @@
 <script type="text/javascript" charset="utf-8" src="/static/admins/ueditor/lang/zh-cn/zh-cn.js">
 </script>
  <body>
+ 
   <div class="mws-panel grid_8"> 
    <div class="mws-panel-header"> 
     <span>商品添加</span> 
+
    </div> 
    <div class="mws-panel-body no-padding"> 
+ 
     <form class="mws-form" action="/adminshop" method="post" enctype="multipart/form-data">
  
      <div class="mws-form-inline"> 
@@ -27,6 +30,15 @@
         <input type="text" class="large" name="name" /> 
        </div> 
       </div> 
+         @if (count($errors) > 0)
+  <div class="alert alert-danger">
+      <ul>
+      @foreach ($errors->get('name') as $error)
+      <font style="color:red">{{ $error }}</font>
+      @endforeach
+      </ul>
+  </div>
+  @endif
       <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">类别</label> 
@@ -39,12 +51,30 @@
         </select>
        </div> 
       </div> 
+      @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('cate_id') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
       <div class="mws-form-row"> 
        <label class="mws-form-label">图片上传</label> 
        <div class="mws-form-item"> 
         <input type="file" class="large" name="pic" /> 
        </div> 
       </div>
+       @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('pic') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
        <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">商品价格</label> 
@@ -52,6 +82,15 @@
         ￥ <input type="text" name="price" />.00 元
        </div> 
       </div> 
+       @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('price') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
        <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">库存</label> 
@@ -59,6 +98,15 @@
         <input type="text" name="stock" /> 
        </div> 
       </div> 
+       @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('stock') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
       <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">是否上架</label> 
@@ -67,6 +115,15 @@
         <input type="radio" name="display" value="1" /> 上架
        </div> 
       </div> 
+       @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('display') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
        <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">出厂地</label> 
@@ -74,6 +131,15 @@
         <input type="text" class="large" name="producer" /> 
        </div> 
       </div> 
+       @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('producer') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
        <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
        <label class="mws-form-label">描述</label> 
@@ -82,6 +148,15 @@
        </div> 
       </div> 
      </div> 
+      @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+          @foreach ($errors->get('descr') as $error)
+          <font style="color:red">{{ $error }}</font>
+          @endforeach
+          </ul>
+      </div>
+      @endif
      <div class="mws-button-row">
       {{csrf_field()}}
       <input type="submit" value="Submit" class="btn btn-danger" /> 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Config;
+use App\Http\Requests\AdminShopInsert;
 class ShopController extends Controller
 {
     /**
@@ -43,12 +44,13 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminShopInsert $request)
     {
         //获取商品添加的数据
         // dd($request->all());
         // 删除_token字段
         $data = $request->except("_token");
+       
         // 文件上传
         if($request->hasFile('pic')){
             // 初始化图片名字
@@ -66,6 +68,8 @@ class ShopController extends Controller
         // 存入数据库
         if(DB::table("pro_goods")->insert($data)){
             return redirect("/adminshop")->with("success","商品添加成功");
+        }else{
+             return redirect("/adminshop/create")->with("error","商品添加失败");
         }
     }
 
@@ -129,6 +133,8 @@ class ShopController extends Controller
             // 图片不修改
              if(DB::table("pro_goods")->where("id",'=',$id)->update($data)){
                 return redirect("/adminshop")->with("success","商品修改成功");
+            }else{
+                return redirect("/adminshop")->with("error","商品未修改");
             }
 
         }
