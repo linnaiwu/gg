@@ -47,6 +47,10 @@ class SliController extends Controller
             $res=$request->file('pic')->getClientOriginalExtension();
             $path=$request->file('pic')->move(Config::get('app.app_uploads'),$name.'.'.$res);
             $a['pic']=trim(Config::get('app.app_uploads')."/".$name.".".$res,'.');
+            if(empty($a['status'])){
+            return redirect("/slides/create")->with("error","状态不能为空");
+
+            }
             if (DB::table('admin_slides')->insert($a)) {
                  return redirect("/slides")->with("success","添加成功");
             }else{
@@ -54,7 +58,10 @@ class SliController extends Controller
 
             }
             
+        }else{
+            return redirect("/slides/create")->with("error","图片不能为空");
         }
+        
     }
 
     /**

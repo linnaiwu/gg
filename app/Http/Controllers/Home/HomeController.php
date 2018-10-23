@@ -32,14 +32,15 @@ class HomeController extends Controller
         if(!$request->ajax()){
                // 获取轮播图数据
                 $data = DB::table('Admin_slides')->select()->get()->where("status",'=','1');
-                // 公告数据
+               //广告
                 $a = DB::table('Admin_gg')->select()->get()->where("status",'=','1');
                 // var_dump($data);
-                // dd($cate);
+                // dd($cate); 
+                // 公告数据
                 $gg = DB::table("admin_notice")->select()->get()->where("status",'=','1');
                 // 获取商品数据
                 $goods = DB::table("pro_goods")->select()->get();
-                echo session('username');
+                
                 // 加载模版
                 return view("Home.Home.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
         }
@@ -116,6 +117,8 @@ class HomeController extends Controller
     public function gonggao($id){
         // echo $id;
         $cate = self::getCatesByPid(0);
-        return view('Home.gonggao.index',['cate'=>$cate]);
+        $a = DB::table('admin_notice')->where('id','=',$id)->first();
+        
+        return view('Home.gonggao.index',['cate'=>$cate,'a'=>$a]);
     }
 }

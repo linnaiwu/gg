@@ -49,6 +49,12 @@ class GgController extends Controller
             $path=$request->file('pic')->move(Config::get('app.app_upload'),$name.'.'.$res);
             // dd($a);
             $a['pic']=trim(Config::get('app.app_upload')."/".$name.".".$res,'.');
+            if(empty($a['name'])){
+                return redirect("/gg/create")->with("error","广告名字不能为空");
+            }
+            if(empty($a['status'])){
+                return redirect("/gg/create")->with("error","状态不能为空");
+            }
             if (DB::table('admin_gg')->insert($a)) {
                  return redirect("/gg")->with("success","添加成功");
             }else{
@@ -56,6 +62,9 @@ class GgController extends Controller
 
             }
             
+        }else{
+                return redirect("/gg/create")->with("error","不能为空");
+
         }
     }
 

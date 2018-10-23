@@ -105,7 +105,7 @@
     <span class="fr"> <span class="fl">
     @if(empty(session('homename')))你好,请<a href="/homelogin">登录</a>&nbsp; <a href="/register/create" style="color:#ff4e00;">免费注册</a>
     @else
-    <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="">退出&nbsp;</a><a href="">个人中心</a>
+    <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="/pull">退出&nbsp;</a><a href="">个人中心</a>
 
     @endif
     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span> <span class="ss"> 
@@ -161,37 +161,8 @@
    </div> 
    <div class="i_car"> 
     <div class="car_t">
-     购物车 [ 
-     <span>3</span> ]
-    </div> 
-    <div class="car_bg"> 
-     <!--Begin 购物车未登录 Begin--> 
-     <div class="un_login">
-      还未登录！
-      <a href="/homelogin" style="color:#ff4e00;">马上登录</a> 查看购物车！
-     </div> 
-     <!--End 购物车未登录 End--> 
-     <!--Begin 购物车已登录 Begin--> 
-     <ul class="cars"> 
-      <li> 
-       <div class="img">
-        <a href="#"><img src="/static/homes/images/car1.jpg" width="58" height="58" /></a>
-       </div> 
-       <div class="name">
-        <a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a>
-       </div> 
-       <div class="price">
-        <font color="#ff4e00">￥399</font> X1
-       </div> </li> 
-      <li> 
-     </ul> 
-     <div class="price_sum">
-      共计&nbsp; 
-      <font color="#ff4e00">￥</font>
-      <span>1058</span>
-     </div> 
-     <div class="price_a">
-      <a href="/Cart">去购物车结算</a>
+   
+      <a href="/Cart">  查看购物车</a>
      </div> 
      <!--End 购物车已登录 End--> 
     </div> 
@@ -280,92 +251,7 @@
     </div> 
    </div> 
    <!--Begin 热门商品 Begin--> 
-   <div class="content mar_10"> 
-    <div class="h_l_img"> 
-     <div class="img">
-      <img src="/static/homes/images/l_img.jpg" width="188" height="188" />
-     </div> 
-     <div class="pri_bg"> 
-      <span class="price fl">￥53.00</span> 
-      <span class="fr">16R</span> 
-     </div> 
-    </div> 
-    <div class="hot_pro"> 
-     <div id="featureContainer"> 
-      <div id="feature"> 
-       <div id="block"> 
-        <div id="botton-scroll"> 
-         <ul class="featureUL"> 
-          <li class="featureBox"> 
-           <div class="box"> 
-            <div class="h_icon">
-             <img src="/static/homes/images/hot.png" width="50" height="50" />
-            </div> 
-            <div class="imgbg"> 
-             <a href="#"><img src="/static/homes/images/hot1.jpg" width="160" height="136" /></a> 
-            </div> 
-            <div class="name"> 
-             <a href="#"> <h2>德国进口</h2> 德亚全脂纯牛奶200ml*48盒 </a> 
-            </div> 
-            <div class="price"> 
-             <font>￥<span>189</span></font> &nbsp; 26R 
-            </div> 
-           </div> </li> 
-          <li class="featureBox"> 
-           <div class="box"> 
-            <div class="h_icon">
-             <img src="/static/homes/images/hot.png" width="50" height="50" />
-            </div> 
-            <div class="imgbg"> 
-             <a href="#"><img src="/static/homes/images/hot2.jpg" width="160" height="136" /></a> 
-            </div> 
-            <div class="name"> 
-             <a href="#"> <h2>iphone 6S</h2> Apple/苹果 iPhone 6s Plus公开版 </a> 
-            </div> 
-            <div class="price"> 
-             <font>￥<span>5288</span></font> &nbsp; 25R 
-            </div> 
-           </div> </li> 
-          <li class="featureBox"> 
-           <div class="box"> 
-            <div class="h_icon">
-             <img src="/static/homes/images/hot.png" width="50" height="50" />
-            </div> 
-            <div class="imgbg"> 
-             <a href="#"><img src="/static/homes/images/hot3.jpg" width="160" height="136" /></a> 
-            </div> 
-            <div class="name"> 
-             <a href="#"> <h2>倩碧特惠组合套装</h2> 倩碧补水组合套装8折促销 </a> 
-            </div> 
-            <div class="price"> 
-             <font>￥<span>368</span></font> &nbsp; 18R 
-            </div> 
-           </div> </li> 
-          <li class="featureBox"> 
-           <div class="box"> 
-            <div class="h_icon">
-             <img src="/static/homes/images/hot.png" width="50" height="50" />
-            </div> 
-            <div class="imgbg"> 
-             <a href="#"><img src="/static/homes/images/hot4.jpg" width="160" height="136" /></a> 
-            </div> 
-            <div class="name"> 
-             <a href="#"> <h2>品利特级橄榄油</h2> 750ml*4瓶装组合 西班牙原装进口 </a> 
-            </div> 
-            <div class="price"> 
-             <font>￥<span>280</span></font> &nbsp; 30R 
-            </div> 
-           </div> </li> 
-         </ul> 
-        </div> 
-       </div> 
-       <a class="h_prev" href="javascript:void();">Previous</a> 
-       <a class="h_next" href="javascript:void();">Next</a> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-  
+
    <div class="content mar_20"> 
     <img src="/static/homes/images/mban_1.jpg" width="1200" height="110" /> 
    </div> 
@@ -575,7 +461,7 @@
   <div class="King_Chance_Layer">
       <div class="King_Chance_LayerCont" style="display:none;">
           <div class="King_Chance_Layer_Close">Close</div>
-            <div class="King_Chance_Layer_Title">SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城SHOPBEST 商城</div>
+            
             <div class="King_Chance_Layer_Btn">
               <ul>
                 @foreach($a as $v)
