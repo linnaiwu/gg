@@ -73,7 +73,7 @@
             	<div class="left_m_t t_bg1">订单中心</div>
                 <ul>
                 	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="Member_Address.html" class="now">收货地址</a></li>
+                    <li><a href="#" class="now">收货地址</a></li>
                     <li><a href="#">缺货登记</a></li>
                     <li><a href="#">跟踪订单</a></li>
                 </ul>
@@ -81,7 +81,7 @@
             <div class="left_m">
             	<div class="left_m_t t_bg2">会员中心</div>
                 <ul>
-                	<li><a href="Member_User.html">用户信息</a></li>
+                	<li><a href="/meuser">用户信息</a></li>
                     <li><a href="Member_Collect.html">我的收藏</a></li>
                     <li><a href="Member_Msg.html">我的留言</a></li>
                     <li><a href="Member_Links.html">推广链接</a></li>
@@ -91,7 +91,7 @@
             <div class="left_m">
             	<div class="left_m_t t_bg3">账户中心</div>
                 <ul>
-                	<li><a href="Member_Safe.html">账户安全</a></li>
+                	<li><a href="/safe">账户安全</a></li>
                     <li><a href="Member_Packet.html">我的红包</a></li>
                     <li><a href="Member_Money.html">资金管理</a></li>
                 </ul>

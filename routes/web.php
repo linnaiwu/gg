@@ -81,6 +81,7 @@ Route::resource("/link","Home\LinkController");
 	Route::resource("/register","Home\RegisterController");
 	//前台登录
 	Route::resource("/homelogin","Home\HomeloginController");
+	//退出登录
 	Route::get("/pull","Home\HomeloginController@pull");
 	//找回密码
 	Route::get("/forget","Home\HomeloginController@forget");
@@ -101,7 +102,9 @@ Route::resource("/link","Home\LinkController");
 	//个人账户
 	Route::resource("/meuser","Home\UserController");
 	//账户安全
-	Route::get("/safe","Home\UserController@safe");
+	Route::get("/safe","Home\UserController@safe");	
+	//修改个人密码
+	Route::post("/mecode","Home\UserController@mecode");
 	//测试邮件发送
 	Route::get("/send","Home\RegisterController@send");
 	//测试邮件发送2
