@@ -47,6 +47,9 @@ class RolelistController extends Controller
         // 向role_node表插入数据 rid 角色id  nid 节点id
         $rid=$request->input("rid");
         // 获取nids
+        if(empty($_POST['nids'])){
+            return back()->with("error","请分配权限");
+        }
         $nids=$_POST['nids'];
         // var_dump($nids);die;
         // 删除当前角色已有的权限
@@ -71,6 +74,7 @@ class RolelistController extends Controller
     public function create()
     {
         //
+        return view("Admin.Rolelist.add");
     }
 
     /**
@@ -81,7 +85,15 @@ class RolelistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        // 取出_token字段
+        $data=$request->except("_token");       
+        // dd($data); 
+        if(DB::table('role')->insert($data)){
+            return redirect("/rolelist")->with("success","角色添加成功");
+        }else{
+            return redirect("/rolelist/create")->with("error","角色添加失败");
+        }
     }
 
     /**
@@ -126,6 +138,13 @@ class RolelistController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // echo $id;
+        // $data=DB::table('role')->join("user_role",'role.id','=','user_role.rid')->where('id','=',$id)->get();
+        // dd($data);
+        if(DB::table('role')->where('id','=',$id)->delete()){
+            return redirect("/rolelist")->with("success","角色删除成功");
+        }else{
+            return redirect("/rolelist")->with("error",'角色删除失败');
+        }
     }
 }

@@ -261,7 +261,7 @@
    @foreach($cate as $row)
     <span class="fl"><b>·</b>&nbsp;{{$row->name}}&nbsp;</span> 
     @foreach($row->dev as $rr)
-    <span class="i_mores fr ll" ><a href="">{{$rr->name}}</a>&nbsp; &nbsp;</span> 
+    <span class="i_mores fr ll" ><a href="/shop/{{$rr->id}}">{{$rr->name}}</a>&nbsp; &nbsp;</span> 
     @endforeach
    @endforeach
    </div> 
@@ -486,15 +486,5 @@
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->  
  </body>
- <script type="text/javascript">
-    // alert($);
-    // 获取一级分类 绑定鼠标点击事件
-    $('.ll').click(function(){
-      // 获取类别的id
-      id=$(this).attr('name');
-      $.get("/home",{id:id},function(data){
-        alert(data);
-      });
-    });
- </script>
+
 </html>

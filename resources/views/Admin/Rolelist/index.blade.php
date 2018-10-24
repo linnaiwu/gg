@@ -13,13 +13,6 @@
    <div class="mws-panel-body no-padding"> 
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
 
-    <form action="/adminuser" method="get">
-     <div class="dataTables_filter" id="DataTables_Table_1_filter">
-      <label>搜索用户名: <input type="text" aria-controls="DataTables_Table_1" name="keywords" value="{{$request['keywords'] or ''}}" /></label>
-      <input type="submit" value="搜索">
-     </div>
-      
-    </form>
      <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info"> 
       <thead> 
        <tr role="row">
@@ -36,15 +29,15 @@
         <td class=" ">{{$row->name}}</td> 
         <td class=" ">
         <a href="/auth/{{$row->id}}" class="btn btn-warning">分配权限</a>
-          <form action="/adminuser/{{$row->id}}" method="post">
+          <form action="/rolelist/{{$row->id}}" method="post">
             <button class="btn btn-success">普通删除</button>
             {{method_field('DELETE')}}
             {{csrf_field()}}
           </form>
           <!-- Ajax -->
         <!--   <a href="javascript:viod(0)" class="btn btn-info del">Ajax删除</a> -->
-       
-          <a href="/adminuser/{{$row->id}}/edit" class="btn btn-info"><i class="icon-wrench"></i></a>
+       <!-- 修改 -->
+          <!-- <a href="/adminuser/{{$row->id}}/edit" class="btn btn-info"><i class="icon-wrench"></i></a> -->
         </td> 
        </tr>
        @endforeach

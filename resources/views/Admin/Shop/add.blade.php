@@ -27,7 +27,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">商品名称</label> 
        <div class="mws-form-item"> 
-        <input type="text" class="large" name="name" /> 
+        <input type="text" class="large" name="name" value="{{old('name')}}" /> 
        </div> 
       </div> 
          @if (count($errors) > 0)
@@ -43,7 +43,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">类别</label> 
        <div class="mws-form-item"> 
-        <select class="large" name="cate_id">
+        <select class="large" name="cate_id" value="{{old('cate_id')}}">
           <option value="">--请选择--</option>
           @foreach($cate as $row)
             <option value="{{$row->id}}">{{$row->name}}</option>
@@ -63,7 +63,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">图片上传</label> 
        <div class="mws-form-item"> 
-        <input type="file" class="large" name="pic" /> 
+        <input type="file" class="large" name="pic" value="{{old('pic')}}" /> 
        </div> 
       </div>
        @if (count($errors) > 0)
@@ -79,7 +79,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">商品价格</label> 
        <div class="mws-form-item"> 
-        ￥ <input type="text" name="price" />.00 元
+        ￥ <input type="text" name="price" placeholder="请输入数字" value="{{old('price')}}" />.00 元
        </div> 
       </div> 
        @if (count($errors) > 0)
@@ -95,7 +95,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">库存</label> 
        <div class="mws-form-item"> 
-        <input type="text" name="stock" /> 
+        <input type="text" name="stock" value="{{old('stock')}}"/> 
        </div> 
       </div> 
        @if (count($errors) > 0)
@@ -111,8 +111,8 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">是否上架</label> 
        <div class="mws-form-item"> 
-        <input type="radio" name="display" value="0" /> 下架
-        <input type="radio" name="display" value="1" /> 上架
+        <input type="radio" name="display" value="0" value="{{old('display')}}"/> 下架
+        <input type="radio" name="display" value="1" value="{{old('display')}}"/> 上架
        </div> 
       </div> 
        @if (count($errors) > 0)
@@ -128,7 +128,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">出厂地</label> 
        <div class="mws-form-item"> 
-        <input type="text" class="large" name="producer" /> 
+        <input type="text" class="large" name="producer" value="{{old('producer')}}" /> 
        </div> 
       </div> 
        @if (count($errors) > 0)
@@ -144,7 +144,7 @@
       <div class="mws-form-row"> 
        <label class="mws-form-label">描述</label> 
        <div class="mws-form-item"> 
-          <script id="editor" type="text/plain" name="descr" style="width:800px;height:500px;"></script>
+          <script id="editor" type="text/plain" name="descr" style="width:800px;height:500px;" ></script>
        </div> 
       </div> 
      </div> 

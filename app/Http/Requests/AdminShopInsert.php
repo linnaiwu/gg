@@ -26,7 +26,7 @@ class AdminShopInsert extends FormRequest
         return [
             'name'=>'required',
             'cate_id'=>'required',
-            'price'=>'required',
+            'price'=>'required|regex:/^[0-9]+$/',
             'stock'=>'required',
             'producer'=>'required',
             'display'=>'required',
@@ -40,6 +40,7 @@ class AdminShopInsert extends FormRequest
             'name.required'=>'★商品名字不能为空',
             'cate_id.required'=>'★商品分类不能为空',
             'price.required'=>'★商品价格不能为空',
+            'price.regex'=>'★商品价格不能乱写',
             'stock.required'=>'★商品库存不能为空',
             'producer.required'=>'★商品产地不能为空',
             'display.required'=>'★商品状态不能为空',

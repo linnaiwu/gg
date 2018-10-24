@@ -129,6 +129,7 @@ class ShopController extends Controller
                 unlink(".".$info->pic);
                 return redirect("/adminshop")->with("success","商品修改成功");
             }
+            
         }else{
             // 图片不修改
              if(DB::table("pro_goods")->where("id",'=',$id)->update($data)){
