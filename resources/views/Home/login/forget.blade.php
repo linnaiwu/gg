@@ -38,7 +38,19 @@
     <script type="text/javascript" src="/static/homes/js/tban.js"></script>
     
 	<script type="text/javascript" src="/static/homes/js/lrscroll_1.js"></script>
-    
+    <style>
+        .sao{
+          margin:0 auto;
+          border:0px solid;
+          width:100px;
+          height:160px;
+          text-align:center;
+        }
+        .ji{
+          font-size:20px;
+          width:200px;
+        }
+    </style>
     
 <title>尤洪</title>
 </head>
@@ -46,27 +58,22 @@
 
 <!--End Header End--> 
 <!--Begin Login Begin-->
-<div class="log_bg">	
+<div class="log_bg" style="background:pink;" >	
     <div class="top">
-   <a href="/home" style="color:black;font-size:20px;" class="sy">返回首页</a>
-        <div class="logo"><a href="Index.html"><img src="/static/homes/images/logo.png" /></a></div>
+ 
+        <div class="logo"><a href="/"><img src="/static/homes/images/logo.png" /></a></div>
     </div>
 	<div class="login">
    	<div class="log_img"><img src="/static/homes/images/l_img.png" width="611" height="425" /></div>
-		<div class="log_c">
-  <center>
+		<div class="log_c"  style="background:#FFF4EF;">
       <span style="color:red;font-size:17px"> {{session('error')}}</span>
       <span style="color:#D72323;font-size:20px"> {{session('reset')}}</span>
-  </center>
 
-              <tr height="50" valign="top">
-            <div> <span class="fl" style="font-size:24px;" >密码找回</span></div></br>
-            <div> <span class="fl zz" style="font-size:16px;" ><a href="/emailget">通过邮箱找回</a></span></div></br>
-            <div> <span class="fl zz" style="font-size:16px;" ><a href="/phone">通过手机号找回</a></span></div></br>
-            <div> <span class="fl zz" style="font-size:16px;" ><a href="">通过安全问题找回</a></span></div></br>
-             </tr>
-
-        </div>
+            <div class="sao"> <font class=" sao" style="font-size:24px;face:楷体;color:black" >密码找回</font></div></br>
+            <div class="ji"><a href="/emailget">通过邮箱找回</a></div></br>
+            <div class="ji"> <a href="/phone">通过手机号找回</a></div></br>
+            </br>
+     </div>
     </div>
 </div>
 <!--End Login End--> 

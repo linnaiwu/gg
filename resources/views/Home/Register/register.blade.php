@@ -30,29 +30,22 @@
 	<script type="text/javascript" src="/static/homes/js/lrscroll_1.js"></script>
     
     
-<title>尤洪</title>
+<title>注册</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
-<div class="soubg">
-	<div class="sou">
+
   <center>
 
          @if(session('zhuc'))
             <h2 style="color:#5CB85C"> {{session('zhuc')}}</h2>
         @endif 
   </center>
-        <span class="fr">
-            <span class="fl"><a href="/home">首页</span>
-        </span>
-    </div>
-</div>
-
 <!--End Header End--> 
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
-        <div class="logo"><a href="Index.html"><img src="/static/homes/images/logo.png" /></a></div>
+        <div class="logo"><a href="/"><img src="/static/homes/images/logo.png" /></a></div>
     </div>
 	<div class="regist">
     	<div class="log_img"><img src="/static/homes/images/l_img.png" width="611" height="425" /></div>

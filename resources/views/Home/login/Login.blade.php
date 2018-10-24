@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="/static/homes/js/lrscroll_1.js"></script>
     
     
-<title>尤洪</title>
+<title>登录</title>
 </head>
 <body>  
 
@@ -44,8 +44,8 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
-   <a href="/home" style="color:black;font-size:20px;" class="sy">返回首页</a>
-        <div class="logo"><a href="Index.html"><img src="/static/homes/images/logo.png" /></a></div>
+
+        <div class="logo"><a href="/"><img src="/static/homes/images/logo.png" /></a></div>
     </div>
 	<div class="login">
    	<div class="log_img"><img src="/static/homes/images/l_img.png" width="611" height="425" /></div>

@@ -18,16 +18,20 @@ class UserController extends Controller
     //个人账户
     public function index()
     {
-        return view("home.me.user");
+        // 商品分类数据
+         $cate = HomeController::getCatesByPid(0);
+        return view("home.me.user",['cate'=>$cate]);
     }
 
     //账号安全管理
     public function safe(){
+        // 商品分类数据
+         $cate = HomeController::getCatesByPid(0);
       if(session('homename')){
         $name=session("homename");
         $users=DB::table("users")->where("username",'=',$name)->first();
         // dd($users->id);
-        return view("home.me.safe",['users'=>$users]);
+        return view("home.me.safe",['users'=>$users,'cate'=>$cate]);
         }else{
             return redirect("/homelogin");
         }

@@ -15,14 +15,15 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+        //商品分类
+    $cate = HomeController::getCatesByPid(0);
     if(session('homename')){
         $session=session('homename');
      $kk=DB::table('users')->select('id')->where('username','=',$session)->first();
      $id=$kk->id;
      $data=DB::table("address")->where('uid','=',$id)->get();
 
-        return view("home.me.address",['data'=>$data]);
+        return view("home.me.address",['data'=>$data,'cate'=>$cate]);
     }else{
         return redirect("/homelogin");
     }
