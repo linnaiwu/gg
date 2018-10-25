@@ -84,6 +84,11 @@ class LinklistController extends Controller
     public function destroy($id)
     {
         //
+        if(DB::table('link')->where('id','=',$id)->delete()){
+            return redirect("/linklist")->with("success","删除成功");
+        }else{
+            return redirect("/linklist")->with("error","删除失败");
+        }
     }
     public function doedit(Request $request){
         $id=$request->input('id');

@@ -348,10 +348,10 @@
    </div> 
    <!--End Footer End --> 
     <!-- 广告 -->
-   <script src=""></script>
   <script src="/static/guanggao/js/King_Chance_Layer.js"></script>
   <link href="/static/guanggao/css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
   <!-- 代码部分begin -->
+  @if(count($a))
   <div class="King_Chance_Layer">
       <div class="King_Chance_LayerCont" style="display:none;">
           <div class="King_Chance_Layer_Close">Close</div>
@@ -368,14 +368,14 @@
               @foreach($a as $v)
                   <li><a href="" target="_blank"><img src="{{$v->pic}}" /></a></li>
                   @endforeach
-  
                 </ul>
-
             </div>
         </div>
     </div>
 <script src="/static/guanggao/js/lanrenzhijia.js"></script>
   </div>  
+  
+  @endif
   <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->  

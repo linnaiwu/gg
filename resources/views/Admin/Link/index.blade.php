@@ -21,8 +21,8 @@
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">网址</th>
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">邮箱</th>
         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">状态</th>
-        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">用户id</th>
-       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">网站描述</th>
+       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTa用户idbles_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">网站描述</th>
+       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">操作</th>
       </thead> 
       <tbody role="alert" aria-live="polite" aria-relevant="all">
       @foreach($linklist as $row)
@@ -32,8 +32,14 @@
         <td class=" ">{{$row->lurl}}</td> 
         <td class=" ">{{$row->email}}</td> 
         <td class="">@if($row->display==0) <button class="btn btn-info a">未审核</button>@else($row->display==1)<button class="btn btn-success a">审核通过 </button> @endif</td> 
-        <td class=" ">{{$row->uid}}</td> 
         <td class=" ">{{$row->descr}}</td> 
+        <td class=" ">
+          <form action="/linklist/{{$row->id}}" method="post">
+            <button class="btn btn-warning">删除</button>
+            {{method_field('DELETE')}}
+            {{csrf_field()}}
+          </form>
+        </td> 
        </tr>
        @endforeach
       </tbody>
