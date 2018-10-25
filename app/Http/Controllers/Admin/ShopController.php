@@ -50,7 +50,6 @@ class ShopController extends Controller
         // dd($request->all());
         // 删除_token字段
         $data = $request->except("_token");
-       
         // 文件上传
         if($request->hasFile('pic')){
             // 初始化图片名字

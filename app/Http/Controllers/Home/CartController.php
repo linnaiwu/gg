@@ -24,17 +24,22 @@ class CartController extends Controller
         $datas = [];
         //遍历商品
         foreach($data as $k=>$v){
+          // var_dump($data);exit;
+          $num = $v['num'];
           //利用id查出商品
           $info  =  DB::table('pro_goods')->where('id','=',$v['id'])->first();
+
           //组装成数组
           $row['name'] = $info->name;
           $row['pic'] = $info->pic;
-          $row['num'] = $v['num'];
+          // var_dump($v['num']);exit;
+          $row['num'] = $num;
           $row['price'] = $info->price;
           $row['id'] = $v['id'];
           $total+=$row['price']*$row['num'];
-          
+          // var_dump($row);exit;
           $datas[] = $row;
+          // var_dump($datas);exit;
         }
 
         // dd($row);
@@ -60,6 +65,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($req);
           $data =$request->except('_token');
 
           if(!$this->Carts($data['id'])){

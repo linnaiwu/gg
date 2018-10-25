@@ -153,8 +153,8 @@
     <a href="/"><img src="/static/homes/images/logo.png" /></a>
    </div> 
    <div class="search"> 
-    <form> 
-     <input type="text" value="" class="s_ipt" /> 
+    <form action="/shop" method="get" id="for"> 
+     <input type="text" name="name" value="" id="text" class="s_ipt" /> 
      <input type="submit" value="搜索" class="s_btn" /> 
     </form> 
     <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span> 
@@ -485,6 +485,18 @@
   <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->  
+
+<!-- 搜索 -->
+<script type="text/javascript">
+$('#for').submit(function(e){
+   var t=$("#text").val();
+   // alert(t);
+        // alert(t);
+        if(t==''){
+           e.preventDefault();
+       }
+});
+</script>
  </body>
 
 </html>

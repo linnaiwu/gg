@@ -29,7 +29,7 @@
             <td align="center">
                 <div class="c_num">
                     <input type="button" value="" onclick="test({{$v['id']}},0)" class="car_btn_1" />
-                    <input type="text" value="{{$v['num']}}" name="" class="car_ipt" />  
+                    <input type="text" value="{{$v['num']}}"  name="" class="car_ipt" />  
                     <input type="button" value="" onclick="test({{$v['id']}},1)" class="car_btn_2" />
                 </div>
             </td>

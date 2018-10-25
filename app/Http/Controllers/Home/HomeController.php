@@ -121,4 +121,5 @@ class HomeController extends Controller
         
         return view('Home.gonggao.index',['cate'=>$cate,'a'=>$a]);
     }
+
 }

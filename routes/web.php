@@ -71,6 +71,7 @@ Route::resource("/","Home\HomeController");
 Route::get("/gonggao/{id}","Home\HomeController@gonggao");
 // 前台商品
 Route::resource("/shop","Home\ShopController");
+// Route::get("/shop","Home\ShopController");
 // 商品详情
 Route::resource("/details","Home\DetailsController");
 

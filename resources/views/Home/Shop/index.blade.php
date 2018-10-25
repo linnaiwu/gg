@@ -41,7 +41,10 @@
             <div class="list_c uid">
                 
                 <ul class="cate_list">
-                                    @foreach($goods as $row)
+                    @if(count($goods)< 1)
+                   <div style="align:center">搜索不到您想要的商品</div>
+                    @else 
+                    @foreach($goods as $row)
                     <li >
                         <div class="img"><a href="/details/{{$row->id}}"><img src="{{$row->pic}}"  width="210" height="185" /></a></div>
                         <div class="price">
@@ -59,6 +62,8 @@
                         </div>
                     </li>
                     @endforeach
+                    @endif
+
                 </ul>
           
             </div>

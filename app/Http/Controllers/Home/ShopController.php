@@ -35,10 +35,14 @@ class ShopController extends Controller
         // var_dump($data);
         // dd($cate);
         $gg = DB::table("admin_notice")->select()->get();
-        // 获取商品数据
-        $goods = DB::table("pro_goods")->select()->get()->where("display",'=','1');
-        // 加载模版
-        return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
+        // 搜索商品
+         $pi = $request->input('name');
+        // dd($pi);
+        
+            $goods = DB::table("pro_goods")->where("name",'like',"%".$pi."%")->get();
+            // 加载模版
+            return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
+        
       
        
     }
@@ -111,7 +115,6 @@ class ShopController extends Controller
     public function update(Request $request, $id)
     {
         //
-        echo $id;
     }
 
     /**

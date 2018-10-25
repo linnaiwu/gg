@@ -50,8 +50,8 @@
             <div class="des_join"> 
               <div class="j_nums"> 
               <form action="/Cart" method="post">
-               <input type="text" value="1" name="num" class="n_ipt" /> 
-               <input type="button" value="" onclick="addUpdate(jq(this));" class="n_btn_1" /> 
+               <input type="text" value="1" name="num" readonly class="n_ipt" /> 
+               <input type="button" value="" onclick="addUpdate(jq(this));" class="n_btn_1"  /> 
                <input type="button" value="" onclick="jianUpdate(jq(this));" class="n_btn_2" /> 
               </div> 
               {{csrf_field()}}
