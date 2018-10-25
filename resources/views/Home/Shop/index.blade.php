@@ -41,7 +41,7 @@
             <div class="list_c uid">
                 
                 <ul class="cate_list">
-                    @if(count($goods)< 1)
+                    @if(count($goods) < 1)
                    <div style="align:center">搜索不到您想要的商品</div>
                     @else 
                     @foreach($goods as $row)

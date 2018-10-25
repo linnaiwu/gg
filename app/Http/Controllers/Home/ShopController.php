@@ -26,23 +26,36 @@ class ShopController extends Controller
     // }
     public function index(Request $request)
     {
-        // 获取分类数据
-        $cate = HomeController::getCatesByPid(0);
-       // 获取广告数据
-        $data = DB::table('Admin_slides')->select()->get();
-        // 公告数据
-        $a = DB::table('Admin_gg')->select()->get();
-        // var_dump($data);
-        // dd($cate);
-        $gg = DB::table("admin_notice")->select()->get();
         // 搜索商品
          $pi = $request->input('name');
         // dd($pi);
-        
+        if(empty($pi)){
+            // 获取分类数据
+            $cate = HomeController::getCatesByPid(0);
+           // 获取广告数据
+            $data = DB::table('Admin_slides')->select()->get();
+            // 公告数据
+            $a = DB::table('Admin_gg')->select()->get();
+            // var_dump($data);
+            // dd($cate);
+            $gg = DB::table("admin_notice")->select()->get();
+            $goods = DB::table("pro_goods")->select()->get();
+            // 加载模版
+            return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
+        }else{
+            // 获取分类数据
+            $cate = HomeController::getCatesByPid(0);
+           // 获取广告数据
+            $data = DB::table('Admin_slides')->select()->get();
+            // 公告数据
+            $a = DB::table('Admin_gg')->select()->get();
+            // var_dump($data);
+            // dd($cate);
+            $gg = DB::table("admin_notice")->select()->get();
             $goods = DB::table("pro_goods")->where("name",'like',"%".$pi."%")->get();
             // 加载模版
             return view("Home.Shop.index",['cate'=>$cate,'data'=>$data,'a'=>$a,'gg'=>$gg,'goods'=>$goods]);
-        
+        }
       
        
     }

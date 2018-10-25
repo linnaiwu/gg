@@ -86,6 +86,9 @@ class RolelistController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        if(empty($request->input['name'])){
+            return back()->with("error","请填写角色名字");
+        }
         // 取出_token字段
         $data=$request->except("_token");       
         // dd($data); 

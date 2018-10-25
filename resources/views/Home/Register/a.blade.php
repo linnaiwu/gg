@@ -1,1 +1,1 @@
-<a href="http://www.gg.com/jihuo?id={{$id}}&token={{$token}}">前往激活用户</a>
+<a href="http://192.168.45.21/jihuo?id={{$id}}&token={{$token}}">前往激活用户</a>
