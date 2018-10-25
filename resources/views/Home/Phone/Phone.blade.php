@@ -76,7 +76,19 @@ font-size:20px;
 
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;手机号 &nbsp;</td>
-                <td style="color:red" >@if(session('yanz')) {{session('yanz')}} @endif<p id="www"></p>
+                <td style="color:red" >
+                @if(session('yanz')) {{session('yanz')}} @endif 
+            @if (count($errors)>0)
+                 @foreach ($errors->get('phone') as $error)
+                    <p>{{ $error }}</p>
+                 @endforeach
+             @endif
+             @if (count($errors)>0)
+                 @foreach ($errors->get('code') as $error)
+                    <p>{{ $error }}</p>
+                 @endforeach
+              @endif
+                <p id="www"></p>
 
                 <input type="text" name="phone" value="{{old('phone')}}" class="l_user" />
                  </td>
@@ -84,7 +96,7 @@ font-size:20px;
               <tr height="50">
               <td align="right"><font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
           <td style="color:red">
-           <input type="text" name="code" value="" class="l_ipt" />
+           <input type="text" name="code" value="{{old('code')}}" class="l_ipt" />
            <a href="javascript:void(0)" class="btn btn-success" id="ss1">点击发送</a>
            </td>
               </tr>

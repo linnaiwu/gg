@@ -26,7 +26,9 @@ class PhoneResetinsert extends FormRequest
         return [
          // username 校验的参数   required 校验规则 用户名不能为空
             'password'=>'required|regex:/\w{6,16}/',
-            'repassword'=>'required|regex:/\w{6,16}/|same:password'
+            'repassword'=>'required|regex:/\w{6,16}/|same:password',
+             'code'=>'required',
+             'phone'=>'required',
         ]; 
     }
 
@@ -39,6 +41,8 @@ class PhoneResetinsert extends FormRequest
             'repassword.required'=>'确认密码不能为空',
             'repassword.regex'=>'确认密码必须是6-16位数字下划线字母',
             'repassword.same'=>'两次密码不一致',
+            'code.required'=>'验证码不能为空',
+            'phone.required'=>'手机号不能为空',
         ];
     }
 }

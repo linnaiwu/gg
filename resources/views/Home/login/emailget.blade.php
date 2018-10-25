@@ -54,7 +54,7 @@
           @endif  
         </center>
 
-        <div class="logo"><a href="Index.html"><img src="/static/homes/images/logo.png" /></a></div>
+        <div class="logo"><a href="/"><img src="/static/homes/images/logo.png" /></a></div>
     </div>
 	<div class="login">
    	<div class="log_img"><img src="/static/homes/images/l_img.png" width="611" height="425" /></div>
