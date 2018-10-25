@@ -64,7 +64,8 @@ class RegisterController extends Controller
             $data['status']=2;
             $data['token']=rand(1,1000000);
             DB::table("users")->where("id",'=',$id)->update($data);
-            echo "激活成功";
+            // echo "激活成功";
+            return redirect("/pull");
         }
 
     }

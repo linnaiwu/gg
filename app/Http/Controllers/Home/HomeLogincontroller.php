@@ -57,7 +57,7 @@ class HomeLogincontroller extends Controller
          $name=$request->input('username');
         $password=$request->input('password');
         // dd($password);
-        $info=DB::table("users")->where("username",'=',$name)->first();
+        $info=DB::table("users")->where("username",'=',$name)->where("status",'=',2)->first();
         if($info){
             if(Hash::check($password,$info->password)){
                 //将登录用户名存入session
