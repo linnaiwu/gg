@@ -136,4 +136,6 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/ddxh/{id}",'Home\OrderlistController@del');
 	//支付宝接口调用
 	Route::get("/pays/{id}","Home\PayController@zfb");
+	//清空购物车
+	Route::get("/delcar","Home\CartController@delcar");
 

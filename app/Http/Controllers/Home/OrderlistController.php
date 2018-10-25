@@ -25,10 +25,10 @@ class OrderlistController extends Controller
 
         $id = $info->id;
 
-        $addr = DB::table('address')->where('uid','=',$id)->first();
+        $addr = DB::table('address')->where('uid','=',$id)->where('status','=','2')->first();
         //判断是否有地址(待加)
         if(!count($addr)){
-            return redirect('/homelogin');
+            return redirect('/address');
         }
         
 

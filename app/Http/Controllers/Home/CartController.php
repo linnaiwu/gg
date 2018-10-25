@@ -24,22 +24,17 @@ class CartController extends Controller
         $datas = [];
         //遍历商品
         foreach($data as $k=>$v){
-          // var_dump($data);exit;
-          $num = $v['num'];
           //利用id查出商品
           $info  =  DB::table('pro_goods')->where('id','=',$v['id'])->first();
-
           //组装成数组
           $row['name'] = $info->name;
           $row['pic'] = $info->pic;
-          // var_dump($v['num']);exit;
-          $row['num'] = $num;
+          $row['num'] = $v['num'];
           $row['price'] = $info->price;
           $row['id'] = $v['id'];
           $total+=$row['price']*$row['num'];
-          // var_dump($row);exit;
+          
           $datas[] = $row;
-          // var_dump($datas);exit;
         }
 
         // dd($row);
@@ -65,25 +60,31 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($req);
           $data =$request->except('_token');
 
           if(!$this->Carts($data['id'])){
             
             $request->session()->push('cart',$data);
           }else{
-
+              $info = DB::table('pro_goods')->where('id','=',$data['id'])->first();
               $cart = session('cart');
               $num = $data['num'];
               foreach($cart as $k=>$v){
                 if($data['id']==$v['id']){
                 $cart[$k]['num'] += $num;
+                if($cart[$k]['num']>$info->stock){
+                    return back()->with('error','库存不足');
+                }
                 } 
                
               }
              
               session(['cart'=>$cart]);
+          
+          }
 
+          if(!empty($request->input('a'))){
+                return back()->with('success','加入购物车成功');
           }
 
          return redirect('/Cart');
@@ -148,7 +149,8 @@ class CartController extends Controller
     }
 
     public function jia(Request $request){
-        $id = $request->id;
+        $id = $request->input('id');
+        $n1 = $request->input('num');
         $info= DB::table('pro_goods')->where('id','=',$id)->first();
         $str = $info->stock;
 
@@ -157,18 +159,9 @@ class CartController extends Controller
         foreach($cart as $k=>$v){
 
             if($v['id']==$id){
-
-               
-                if(($v['num']+1)>$str){
-                   
-                    return 0;
-                }else{
-
-                 $cart[$k]['num']+=1;
+                 $cart[$k]['num']=$n1;
                  session(['cart'=>$cart]);
-                    return 1;
-                }
-
+                 return 1;       
         }
 
        
@@ -177,47 +170,64 @@ class CartController extends Controller
 }
 
     public function jian(Request $request){
-        $id = $request->id;
+        $id = $request->input('id');
+        $n2 = $request->input('num');
+       
         $cart = session('cart');
 
         foreach($cart as $k=>$v){
 
             if($v['id']==$id){
-
-               
-                if(($v['num']-1)<=0){
-                   
-                    return 0;
-                }else{
-
-                 $cart[$k]['num']=$v['num']-1;
+                 $cart[$k]['num']=$n2;
                  session(['cart'=>$cart]);
-                return 1;
-                }
-
+                 return 1;         
         }
-
-       
-       
     }
+        
+       
+       
+    
 }
-    public function del($id){
-
+ 
+    public function del(Request $request){
+      $id = $request->input('id');
       $cart = session('cart');
-
+      // dd($cart);
       foreach($cart as $k=>$v){
 
         if($v['id']==$id){
 
             unset($cart[$k]);
       }
-      session(['cart'=>$cart]);
-      return redirect('/Cart');
+     
+    } 
+    session(['cart'=>$cart]);
 
+    if(empty(session('cart')) && empty(session('homename'))){
+        return 0;
+    }else if(!empty(session('homename') && !empty(session('cart')))){
+        return 1;
+    }else if(!empty(session('homename') && empty(session('cart')))){
+        return 2;
+    }else if(empty(session('homename') && !empty(session('cart')))){
+        return 3;
     }
+    
+
  }
 
-    public function publ(){
-        
+    public function delcar(Request $request){
+        $request->session()->pull('cart');
+
+
+        if(empty(session('cart')) && empty(session('homename'))){
+            return 0;
+        }else if(!empty(session('homename') && !empty(session('cart')))){
+            return 1;
+        }else if(!empty(session('homename') && empty(session('cart')))){
+            return 2;
+        }else if(empty(session('homename') && !empty(session('cart')))){
+            return 3;
+        }
     }
 }
