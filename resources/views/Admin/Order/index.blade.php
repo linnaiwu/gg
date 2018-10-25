@@ -1,7 +1,7 @@
 @extends("Admin.AdminPublics.public")
 @section("title",'后台订单列表')
 
-@section('admin')
+@section('admin') 
 <html>
  <head></head>
  <script src="/static/jquery-1.8.3.min.js"></script>
@@ -54,6 +54,10 @@
         {{$status[$v->status]}}
         @elseif($v->status==0)
         {{$status[$v->status]}}
+        @elseif($v->status==4)
+        <a href="/adminorderstatus/{{$v->id}}" class="btn btn-danger">{{$status[$v->status]}}</a>
+        @elseif($v->status==5)
+        {{$status[$v->status]}}</a>
         @endif
         </td>
         <td class=" " align="center">
@@ -66,7 +70,7 @@
      </table>
     
      <div class="dataTables_paginate paging_full_numbers" id="pages">
- 
+      {{$order->appends($orderid)->render()}}
      </div>
     </div> 
    </div> 

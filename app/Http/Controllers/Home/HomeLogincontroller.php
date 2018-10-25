@@ -21,7 +21,7 @@ class HomeLogincontroller extends Controller
      */
     public function index()
     {
-        //
+       
        return view("home.login.login");
     }
 
@@ -29,6 +29,7 @@ class HomeLogincontroller extends Controller
     public function pull(Request $request){
         // unset(session('homename'));
         $request->session()->pull('homename');
+        $request->session()->pull('cart');
       return  redirect("/homelogin");
     }
 

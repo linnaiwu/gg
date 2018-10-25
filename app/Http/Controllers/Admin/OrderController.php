@@ -19,10 +19,10 @@ class OrderController extends Controller
             $orderid =$request->input('orderid');
         }
  
-        $info = DB::table('order')->join('users','order.uid','=','users.id')->join('address','order.aid','=','address.id')->select('order.id','order.oid','order.total','order.status','users.username','address.name as aname','address.phone','address.address')->where('order.oid','like','%'.$orderid.'%')->paginate(10);
+        $info = DB::table('order')->join('users','order.uid','=','users.id')->join('address','order.aid','=','address.id')->select('order.id','order.oid','order.total','order.status','users.username','address.name as aname','address.phone','address.address')->where('order.oid','like','%'.$orderid.'%')->paginate(1);
 
-         $status = ['未支付','发货','已发货','已收货'];
-        return view('Admin.Order.index',['order'=>$info,'status'=>$status]);
+         $status = ['未支付','发货','已发货','已收货','审核退款,点击退货','退款成功'];
+        return view('Admin.Order.index',['order'=>$info,'status'=>$status,'orderid'=>$orderid]);
     }
 
     /**
@@ -117,6 +117,11 @@ class OrderController extends Controller
 
         if($info->status==1){
            if(DB::table('order')->where('id','=',$id)->update(['status'=>2])){
+                return redirect('/adminorderlist');
+           }
+        }
+         if($info->status==4){
+           if(DB::table('order')->where('id','=',$id)->update(['status'=>5])){
                 return redirect('/adminorderlist');
            }
         }

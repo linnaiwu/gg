@@ -58,20 +58,27 @@
                 <td>{{$v->phone}}</td>
                 <td>{{$v->address}}</td>
                 <td>
-                @if($v->status==0)
-                <a href="/pays">{{$status[$v->status]}}</a>
-                @elseif($v->status==1)
-                {{$status[$v->status]}}
-                @elseif($v->status==2)
-                <a href="/zt/{{$v->sid}}">{{$status[$v->status]}}</a>
-                @elseif($v->status==3)
-                {{$status[$v->status]}}
+                @if($v->os==0)
+                <a href="/pays">{{$status[$v->os]}}</a>
+                @elseif($v->os==1)
+                {{$status[$v->os]}}
+                @elseif($v->os==2)
+                <a href="/zt/{{$v->sid}}">{{$status[$v->os]}}</a>
+                @elseif($v->os==3)
+                {{$status[$v->os]}}
+                @elseif($v->os==4)
+                <p>{{$status[$v->os]}}<p>
+                @elseif($v->os==5)
+                <p>{{$status[$v->os]}}<p>
                 @endif
                 </td>
                 <td>
                   <p>查看物流<p>
-                  @if($v->status==0)
+                  @if($v->os==0)
                   <a href="/ddxh/{{$v->sid}}">取消订单</a>
+                  @endif
+                  @if($v->os==3)
+                  <a href="/zt/{{$v->sid}}">申请退款</a>
                   @endif
                 </td>
               </tr>
@@ -89,6 +96,12 @@
             </table>        
         </div>
     </div>
+     @if(session('success'))
+  <script>alert("{{session('success')}}")</script>
+ @endif
+ @if(session('error'))
+ <script>alert("{{session('error')}}")</script>
+ @endif
     <script>
 
     </script>

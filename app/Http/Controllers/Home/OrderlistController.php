@@ -25,8 +25,8 @@ class OrderlistController extends Controller
 
         $id = $info->id;
 
-        $addre= DB::table('address')->where('uid','=',$id)->where('status','=','2')->first();
-
+        $addre = DB::table('address')->where('uid','=',$id)->where('status','=','2')->first();
+        //判断是否有地址(待加)
         // dd($addr);
         //判断是否有地址(待加)
         if(!count($addre)){
@@ -41,7 +41,7 @@ class OrderlistController extends Controller
             $addr['address']=$addre->address;
             $addr['id']=$addre->id;
         }
-
+        
 
         
         if(empty($cart)){
@@ -138,13 +138,14 @@ class OrderlistController extends Controller
 
          //订单表
          // dd($request->session()->all());
-
+            $name = session('homename'); 
+            $aid = $request->input('aid');
+        // dd($aid);
+         if($aid=="xxx"){
+            return redirect("/address");
+        }else{   
         $name = session('homename'); 
         $aid = $request->input('aid');
-        // dd($aid);
-     if($aid=="xxx"){
-        return redirect("/address");
-     }else{   
         $total =$request->input('total');
         $user = DB::table('users')->where('username','=',$name)->first();
         $data['uid']=$user->id;
@@ -172,12 +173,16 @@ class OrderlistController extends Controller
         $datas['price'] = implode(',',$price);
         $result = DB::table('orders')->insert($datas);
 
+        
+
+      
+
         if($id && $result){
             $request->session()->pull('cart');
             return redirect('/ordersss/'.$id);
         }
-      }  
-
+        
+}
     }
 
     public function orders($id){
@@ -193,7 +198,7 @@ class OrderlistController extends Controller
     public function orderlist(){
         $name = session('homename');
         $info = DB::table('users')->where('username','=',$name)->first();
-        $data = DB::table('users')->join('order','order.uid','=','users.id')->join('orders','orders.oid','=','order.id')->join('address','order.aid','=','address.id')->select('order.oid','order.total','order.status','order.addtime','orders.gid','orders.num','address.*','users.id','orders.price','order.id as sid')->get();
+        $data = DB::table('users')->join('order','order.uid','=','users.id')->join('orders','orders.oid','=','order.id')->join('address','order.aid','=','address.id')->select('order.oid','order.total','order.status as os','order.addtime','orders.gid','orders.num','address.*','users.id','orders.price','order.id as sid')->get();
 
         // var_dump($data);die;
         $datas=[];
@@ -213,8 +218,8 @@ class OrderlistController extends Controller
        }
        // dd($datas);
    
-       $status = ['立即付款','待发货','确认收货','交易完成'];
-       
+       $status = ['立即付款','待发货','确认收货','交易完成','申请退款中','退款成功'];
+       // dd($datas);
         return view('Home.Order.orderlist',['cate'=>HomeController::getCatesByPid(0),'data'=>$datas,'status'=>$status]);
     }
 
@@ -222,7 +227,7 @@ class OrderlistController extends Controller
     public function status($id){
 
     
-        // echo $id;
+     
         $info = DB::table('order')->where('id','=',$id)->first();
         
         if($info->status==0){
@@ -236,13 +241,23 @@ class OrderlistController extends Controller
                 DB::table('pro_goods')->where('id','=',$gid[$i])->update(['stock'=>$stock]);
                
             }
+
              return redirect('/orderlist');
         }
     }
 
     if($info->status==2){
        if(DB::table('order')->where('id','=',$id)->update(['status'=>3])){
+
             return redirect('/orderlist');
+       }
+
+    }
+
+    if($info->status==3){
+       if(DB::table('order')->where('id','=',$id)->update(['status'=>4])){
+
+            return redirect('/orderlist')->with('success','退款申请成功,待退款');
        }
 
     }

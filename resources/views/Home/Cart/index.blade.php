@@ -106,8 +106,9 @@
          num1 = $(this).prev().val();
           n1  =parseInt(num1)+1;
 
-          if(n1>40){
-               o.prev().val(40);
+          if(n1>99){
+               o.prev().val(99);
+               o.attr('disabled',true);
               alert('最多可买99件');
               return false;
             }
@@ -134,6 +135,7 @@
 
          id = $(this).next().attr('aid');
          o = $(this);
+         o.attr('disabled',false);
          num2 = $(this).next().val();
          n2 = parseInt(num2)-1;
 

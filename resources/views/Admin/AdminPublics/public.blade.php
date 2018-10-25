@@ -28,6 +28,7 @@
   <link rel="stylesheet" type="text/css" href="/static/admins/css/mws-theme.css" media="screen" /> 
   <link rel="stylesheet" type="text/css" href="/static/admins/css/themer.css" media="screen" /> 
   <link rel="stylesheet" type="text/css" href="/static/admins/css/my.css" media="screen" /> 
+  <link type="text/css" rel="stylesheet"  href="/static/admins/Index/css.css" />
   <title>@yield('title')</title> 
  </head> 
  <body> 
@@ -233,6 +234,7 @@
   <!-- Themer Script (Remove if not needed) --> 
   <script src="/static/admins/js/core/themer.js"></script> 
   <!-- Demo Scripts (remove if not needed) --> 
-  <script src="/static/admins/js/demo/demo.dashboard.js"></script>  
+  <script src="/static/admins/js/demo/demo.dashboard.js"></script> 
+  <script src="/static/admins/Index/1.js"></script> 
  </body>
 </html>
