@@ -138,4 +138,7 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/pays/{id}","Home\PayController@zfb");
 	//清空购物车
 	Route::get("/delcar","Home\CartController@delcar");
+	//ajax删除购物车商品
+	Route::get("/Carts","Home\CartController@del");
+	
 
