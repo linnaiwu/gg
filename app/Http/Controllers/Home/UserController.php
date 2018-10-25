@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Http\Requests\MeSafeinsert;
 use Hash;
+use Config;
 
 class UserController extends Controller
 {
@@ -18,10 +19,20 @@ class UserController extends Controller
     //个人账户
     public function index()
     {
+        $name=session('homename');
+        if($name){
+         $data=DB::table("users")->where("username",'=',$name)->first();
+        // dd($data);
         // 商品分类数据
          $cate = HomeController::getCatesByPid(0);
-        return view("home.me.user",['cate'=>$cate]);
+        return view("home.me.user",['cate'=>$cate,'data'=>$data]);           
+    }else{
+        return redirect("/pull");
     }
+
+    }
+
+
 
     //账号安全管理
     public function safe(){

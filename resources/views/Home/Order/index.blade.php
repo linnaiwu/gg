@@ -2,6 +2,7 @@
 @section("title","确认订单列表")
 
 @section("home")
+
 <div class="i_bg">  
     <div class="content mar_20">
         <img src="/static/homes/images/img2.jpg" />        
@@ -42,15 +43,15 @@
             <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="p_td" width="160">收货人姓名</td>
-                <td width="395">{{$addr->name}}</td>
+                <td width="395" id="skk">{{$addr['name']}}</td>
               </tr>
               <tr>
                 <td class="p_td">收货地址</td>
-                <td>{{$addr->address}}</td>
+                <td>{{$addr['address']}}</td>
               </tr>
               <tr>
                 <td class="p_td">电话</td>
-                <td>{{$addr->phone}}</td>
+                <td>{{$addr['phone']}}</td>
               </tr>
             </table>
             <table border="0" style="width:1100px; margin-top:20px;" cellspacing="0" cellpadding="0">
@@ -61,7 +62,7 @@
               </tr>
               <tr height="70">
                 <form action="/orders" method="post">
-                <input type="hidden" name="aid" value="{{$addr->id}}">
+                <input type="hidden" name="aid" value="{{$addr['id']}}">
                 <input type="hidden" name="total" value="{{$total}}">
                 {{csrf_field()}}
                 <td align="right"><input type="submit" value="" style="background:url(/static/homes/images/btn_sure.gif) no-repeat center; width:150px;height:45px;"></td>

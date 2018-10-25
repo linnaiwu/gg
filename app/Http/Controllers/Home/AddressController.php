@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use App\Http\Requests\Addrinsert;
 class AddressController extends Controller
 {
     /**
@@ -45,7 +45,7 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Addrinsert $request)
     {
         //
         $session=session('homename');

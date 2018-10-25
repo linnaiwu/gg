@@ -25,12 +25,23 @@ class OrderlistController extends Controller
 
         $id = $info->id;
 
-        $addr = DB::table('address')->where('uid','=',$id)->where('status','=','2')->first();
+        $addre= DB::table('address')->where('uid','=',$id)->where('status','=','2')->first();
+
+        // dd($addr);
         //判断是否有地址(待加)
-        if(!count($addr)){
-            return redirect('/address');
+        if(!count($addre)){
+            // return redirect('/address');
+            $addr['name']='xxx';
+            $addr['phone']='xxx';
+            $addr['address']='xxx';
+            $addr['id']='xxx';
+        }else{
+            $addr['name']=$addre->name;
+            $addr['phone']=$addre->phone;
+            $addr['address']=$addre->address;
+            $addr['id']=$addre->id;
         }
-        
+
 
         
         if(empty($cart)){
@@ -127,8 +138,13 @@ class OrderlistController extends Controller
 
          //订单表
          // dd($request->session()->all());
+
         $name = session('homename'); 
         $aid = $request->input('aid');
+        // dd($aid);
+     if($aid=="xxx"){
+        return redirect("/address");
+     }else{   
         $total =$request->input('total');
         $user = DB::table('users')->where('username','=',$name)->first();
         $data['uid']=$user->id;
@@ -156,15 +172,11 @@ class OrderlistController extends Controller
         $datas['price'] = implode(',',$price);
         $result = DB::table('orders')->insert($datas);
 
-        
-
-      
-
         if($id && $result){
             $request->session()->pull('cart');
             return redirect('/ordersss/'.$id);
         }
-        
+      }  
 
     }
 

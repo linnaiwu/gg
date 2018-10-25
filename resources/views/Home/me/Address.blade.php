@@ -314,20 +314,28 @@
                 </td>
               <tr>
                 <td align="right">收货人姓名</td>
-                <td style="font-family:'宋体';"><input type="text" name="name" value="" class="add_ipt" />（必填）</td>
+                <td style="font-family:'宋体';"><input type="text" name="name" value="" class="add_ipt"  id="name" />
+               @if (count($errors)>0)
+                 @foreach ($errors->get('name') as $error)
+               <span style="color:red"> {{ $error }}</span>
+                 @endforeach
+                @else
+            <span  style="color:red"> (必填) </span>
+              @endif
+                </td>
 
               </tr>
               <tr>
                 <td align="right">附加地址</td>
-                <td style="font-family:'宋体';"><input type="text" name="addr" value="" class="add_ipt" />（必填）</td>
+                <td style="font-family:'宋体';"><input type="text" name="addr" value="" class="add_ipt" />  <span  style="color:red"> (必填) </span></td>
               </tr>
               <tr>
                 <td align="right">手机</td>
-                <td style="font-family:'宋体';"><input type="text" id="ph" name="phone" value="" class="add_ipt" /><span id="zheng"> (必填) </span></td>
+                <td style="font-family:'宋体';"><input type="text" id="ph" name="phone" value="" class="add_ipt" /><span id="zheng" style="color:red"> (必填) </span></td>
               </tr>
            <tr>
                 <td aling="right">
-                 <button type="submit" class="btn btn-success">确认添加</button>
+                 <button type="submit" class="btn btn-success" id="btn">确认添加</button>
                  </td>
             </tr>
             </table>
@@ -423,8 +431,10 @@
 </body>
 <script>
 //手机号正则
+  var  btn = document.getElementById('btn');
 var inp = document.getElementById('ph');
 var  myfont = document.getElementById('zheng');
+    btn.disabled = true;
 inp.onfocus=function(){
   console.log('获取焦点');
   myfont.innerHTML = '&nbsp;&nbsp;请输入11位数字的电话号码';
@@ -438,13 +448,15 @@ inp.onblur = function(){
   //match() --->null
   if (str.match(/^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/)==null) {
     //alert('没有匹配到')
-    myfont.innerHTML = '&nbsp;&nbsp;用户名验证失败';
-    myfont.color="red";
+    myfont.innerHTML = '&nbsp;&nbsp;手机验证失败';
     myfont.size=1;
+    btn.disabled = true;
+    // alert("用户名验证失败");
   }else{
     myfont.innerHTML = '√';
     myfont.color="green";
     myfont.size =1;
+      btn.disabled = false;
     //alert('匹配到了')
   }
 }
