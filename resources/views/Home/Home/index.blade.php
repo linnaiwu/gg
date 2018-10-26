@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:wb="http://open.weibo.com/wb">
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <link type="text/css" rel="stylesheet" href="/static/homes/css/style.css" /> 
@@ -9,6 +9,7 @@
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]--> 
+    <script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" src="/static/homes/js/jquery-1.11.1.min_044d0927.js"></script> 
   <script type="text/javascript" src="/static/homes/js/jquery.bxslider_e88acd1b.js"></script> 
   <script type="text/javascript" src="/static/homes/js/jquery-1.8.2.min.js"></script> 
@@ -24,6 +25,12 @@
   <script type="text/javascript" src="/static/homes/js/tban.js"></script> 
   <script type="text/javascript" src="/static/homes/js/lrscroll_1.js"></script> 
   <title>前台首页</title> 
+  <style type="text/css">
+    .sina{
+      float: right;
+      margin-top: 5px;
+    }
+  </style>
  </head> 
  <body> 
   <!--Begin Header Begin--> 
@@ -39,7 +46,14 @@
     <span class="fr"> <span class="fl">你好,<a href="/homelogin" style="color:gold;font-size:15px;">{{session('homename')}}</a>&nbsp;<a href="/pull">退出&nbsp;</a><a href="/meuser">个人中心</a>
     &nbsp;|&nbsp;<a href="/orderlist">我的订单</a>
     @endif
-    &nbsp;&nbsp;关注我们：</span> <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span> <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="/static/homes/images/s_tel.png" align="absmiddle" /></a></span> </span> 
+    &nbsp;&nbsp;关注我们：</span>
+    <!-- 微信开始 -->
+    <div class="bdsharebuttonbox s_sh" data-tag="share_1" style="width:30px;margin-top:3px;">
+      <a class="bds_weixin" data-cmd="weixin" href="#"></a>
+     </div>
+     <!-- /微信结束 -->
+    <div class="sina"><a href="#" class="sh1"><wb:follow-button uid="6796261616" type="red_1" width="67" height="24" ></wb:follow-button></a></div>
+    </span>
    </div> 
   </div> 
   <div class="top"> 
@@ -392,5 +406,23 @@ $('#for').submit(function(e){
 });
 </script>
  </body>
-
+<!-- 分享模块 -->
+<script>
+  window._bd_share_config = {
+    common : {
+      bdText : '自定义分享内容', 
+      bdDesc : '自定义分享摘要', 
+      bdUrl : '自定义分享url地址',   
+      bdPic : '自定义分享图片'
+    },
+    share : [{
+      "bdSize" : 16
+    }],
+    selectShare : [{
+      "bdselectMiniList" : ['weixin']
+    }]
+  }
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<!-- 分享模块结束 -->
 </html>
