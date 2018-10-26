@@ -115,5 +115,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        // dd($id);
+        DB::table("users")->where("id",'=',$id)->delete();
+        return redirect("/adminuserss")->with('success','删除成功');
     }
 }

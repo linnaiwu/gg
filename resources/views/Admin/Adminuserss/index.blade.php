@@ -8,7 +8,7 @@
  <body>
   <div class="mws-panel grid_8"> 
    <div class="mws-panel-header"> 
-    <span><i class="icon-table"></i> 后台会员Ajax分页列表</span> 
+    <span><i class="icon-table"></i>会员列表</span> 
    </div> 
    <div class="mws-panel-body no-padding"> 
     <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
@@ -28,7 +28,8 @@
           <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 142px;">ID</th>
           <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 190px;">会员名</th>
           <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 174px;">邮箱</th>
-          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 174px;">电话</th>
+           <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 174px;">电话</th>
+          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 174px;">状态</th>
           
           <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 90px;">操作</th>
          </tr> 
@@ -40,8 +41,13 @@
           <td class=" ">{{$row->username}}</td> 
           <td class=" ">{{$row->email}}</td> 
           <td class=" ">{{$row->phone}}</td> 
+          <td class=" "> {{$row->status}}</td> 
           <td class=" ">
-            <a href="" class="btn btn-info"><i class="icon-wrench"></i></a>
+           <form action="/adminuserss/{{$row->id}}" method="post">
+            <button class="btn btn-success">删除</button>
+            {{method_field('DELETE')}}
+            {{csrf_field()}}
+          </form>
           </td> 
          </tr>
         @endforeach
