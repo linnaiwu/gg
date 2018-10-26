@@ -140,5 +140,9 @@ Route::resource("/link","Home\LinkController");
 	Route::get("/delcar","Home\CartController@delcar");
 	//ajax删除购物车商品
 	Route::get("/Carts","Home\CartController@del");
+	//添加评论
+	Route::get('/pls/{oid}/{gid}','Home\DetailsController@pls');
+	//评论
+	Route::post("/pl","Home\DetailsController@pl");
 	
 

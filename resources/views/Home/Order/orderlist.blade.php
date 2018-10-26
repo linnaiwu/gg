@@ -1,5 +1,8 @@
-@extends("home.me.public")
-@section('me')
+@extends("Home.HomePublic.public") 
+
+@section("title","订单列表")
+
+@section("home")
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
   <div class="m_content">
@@ -64,6 +67,8 @@
                 <p>{{$status[$v->os]}}<p>
                 @elseif($v->os==5)
                 <p>{{$status[$v->os]}}<p>
+                @elseif($v->os==6)
+                <p>{{$status[$v->os]}}<p>
                 @endif
                 </td>
                 <td>
@@ -71,8 +76,9 @@
                   @if($v->os==0)
                   <a href="/ddxh/{{$v->sid}}">取消订单</a>
                   @endif
-                  @if($v->os==3)
+                  @if($v->os==3 ||$v->os==6)
                   <a href="/zt/{{$v->sid}}">申请退款</a>
+
                   @endif
                 </td>
               </tr>
@@ -83,7 +89,12 @@
                 <td colspan="4"><img src="{{$vv->pic}}" width="200" height="200"></td>
                 <td>价格:{{$vv->price}}</td>
                 <td>数量:x{{$vv->num}}</td>
-                <td align="left" colspan="2">产地:{{$vv->producer}}</td>
+                <td align="left" >产地:{{$vv->producer}}</td>
+                @if($v->os==3)
+                <td><a href="/pls/{{$vv->id}}/{{$v->sid}}">去评价</a></td>
+                @else
+                <td></td>
+                @endif
               </tr>
               @endforeach
               @endforeach

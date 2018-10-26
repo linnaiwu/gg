@@ -57,7 +57,9 @@
         @elseif($v->status==4)
         <a href="/adminorderstatus/{{$v->id}}" class="btn btn-danger">{{$status[$v->status]}}</a>
         @elseif($v->status==5)
-        {{$status[$v->status]}}</a>
+        {{$status[$v->status]}}
+        @elseif($v->status==6)
+        {{$status[$v->status]}}
         @endif
         </td>
         <td class=" " align="center">

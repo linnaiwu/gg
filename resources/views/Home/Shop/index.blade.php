@@ -52,7 +52,6 @@
                         </div>
                         <div class="name"><a href="/details/{{$row->id}}">{{$row->name}}</a></div>
                         <div class="carbg">
-                            <a href="#" class="ss">收藏</a>
                             <form action="/Cart" method="post">
                             <input type="hidden" name="id" value="{{$row->id}}">
                             <input type="hidden" name="num" value="1">
@@ -69,6 +68,11 @@
             </div>
         </div>
     </div>
-
+     @if(session('success'))
+  <script>alert("{{session('success')}}")</script>
+ @endif
+ @if(session('error'))
+ <script>alert("{{session('error')}}")</script>
+ @endif
 
 @endsection

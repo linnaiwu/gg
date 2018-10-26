@@ -198,7 +198,7 @@ class OrderlistController extends Controller
     public function orderlist(){
         $name = session('homename');
         $info = DB::table('users')->where('username','=',$name)->first();
-        $data = DB::table('users')->join('order','order.uid','=','users.id')->join('orders','orders.oid','=','order.id')->join('address','order.aid','=','address.id')->select('order.oid','order.total','order.status as os','order.addtime','orders.gid','orders.num','address.*','users.id','orders.price','order.id as sid')->get();
+        $data = DB::table('users')->join('order','order.uid','=','users.id')->join('orders','orders.oid','=','order.id')->join('address','order.aid','=','address.id')->select('order.oid','order.total','order.status as os','order.addtime','orders.gid','orders.num','address.*','users.id','orders.price','order.id as sid','order.id as ooid')->get();
 
         // var_dump($data);die;
         $datas=[];
@@ -218,7 +218,7 @@ class OrderlistController extends Controller
        }
        // dd($datas);
    
-       $status = ['立即付款','待发货','确认收货','交易完成','申请退款中','退款成功'];
+       $status = ['立即付款','待发货','确认收货','交易完成','申请退款中','退款成功','交易完成'];
        // dd($datas);
         return view('Home.Order.orderlist',['cate'=>HomeController::getCatesByPid(0),'data'=>$datas,'status'=>$status]);
     }

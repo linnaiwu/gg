@@ -75,8 +75,61 @@
                 </div>
             </div>  
             @endforeach
-    </div>
-    @endforeach
+           @endforeach
+           @if(!empty(session('homename')))
+           <div class="des_border" id="p_comment">
+              <div class="des_t">商品评论</div>
+                
+                <table border="0" class="jud_tab" cellspacing="0" cellpadding="0">
+                  <tbody><tr>
+                    <td width="175" class="jud_per">
+                      <p>80.0%</p>好评度
+                    </td>
+                    <td width="310">
+                      <table border="0" style="width:100%;" cellspacing="0" cellpadding="0">
+                          <tbody><tr>
+                            <td width="90">好评<font color="#999999">（80%）</font></td>
+                            <td><img src="images/pl.gif" align="absmiddle"></td>
+                          </tr>
+                          <tr>
+                            <td>中评<font color="#999999">（20%）</font></td>
+                            <td><img src="images/pl.gif" align="absmiddle"></td>
+                          </tr>
+                          <tr>
+                            <td>差评<font color="#999999">（0%）</font></td>
+                            <td><img src="images/pl.gif" align="absmiddle"></td>
+                          </tr>
+                        </tbody></table>
+                    </td>
+                    <td width="290" class="jud_bg">您可对已购买商品进行评价<br><a href="#"><img src="images/btn_jud.gif"></a></td>
+                  </tr>
+                </tbody></table>
+                
+                
+                        
+                <table border="0" class="jud_list" style="width:100%; margin-top:30px;" cellspacing="0" cellpadding="0">
+                  <tbody><tr valign="top">
+                  @foreach($info as $v)
+                    <td width="160">&nbsp;{{$v->name}}</td>
+                    <td width="180">
+                      好评值：<font color="#999999">{{$xx[$v->score]}}</font> <br>
+                    </td>
+                    <td>
+                      {{$v->content}} <br>
+                        <font color="#999999">{{$v->addtime}}</font>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody></table>
+
+                  
+                    
+              
+                   <div style="float:right">{{$info->render()}}</div>
+        @endif
+   
+
+
     
 
 

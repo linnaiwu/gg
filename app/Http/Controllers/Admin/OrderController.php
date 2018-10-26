@@ -21,7 +21,7 @@ class OrderController extends Controller
  
         $info = DB::table('order')->join('users','order.uid','=','users.id')->join('address','order.aid','=','address.id')->select('order.id','order.oid','order.total','order.status','users.username','address.name as aname','address.phone','address.address')->where('order.oid','like','%'.$orderid.'%')->paginate(1);
 
-         $status = ['未支付','发货','已发货','已收货','审核退款,点击退货','退款成功'];
+         $status = ['未支付','发货','已发货','已收货','审核退款,点击退货','退款成功','交易完成'];
         return view('Admin.Order.index',['order'=>$info,'status'=>$status,'orderid'=>$orderid]);
     }
 

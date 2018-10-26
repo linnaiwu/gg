@@ -2,7 +2,9 @@
 <html xmlns:wb="http://open.weibo.com/wb">
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <link type="text/css" rel="stylesheet" href="/static/homes/css/style.css" /> 
+  <link type="text/css" rel="stylesheet" href="/static/homes/css/style.css" />
+   <link type="text/css" rel="stylesheet" href="/static/admins/Index/pl.css" />
+  <link type="text/css" rel="stylesheet" href="/static/css.css" /> 
   <!--[if IE 6]>
     <script src="/static/homes/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
